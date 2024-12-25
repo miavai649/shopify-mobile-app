@@ -29,6 +29,8 @@ import { Heading } from '@/components/ui/heading'
 const index = () => {
   const [showNavigationDrawer, setShowNavigationDrawer] = useState(false)
   const [showDrawer, setShowDrawer] = useState(false)
+  const [topOffset, setTopOffset] = useState(0)
+  const topSectionRef = useRef(null)
 
   // Animated drawer style for sliding in/out
   const drawerStyle = useAnimatedStyle(() => {
@@ -46,8 +48,14 @@ const index = () => {
 
   return (
     <SafeAreaView>
-      {/* top section */}
-      <HStack className='justify-between mx-6'>
+      {/* Top section */}
+      <HStack
+        ref={topSectionRef}
+        onLayout={(event) => {
+          const { y, height } = event.nativeEvent.layout
+          setTopOffset(y + height + 5) // Capture the bottom position of the top section
+        }}
+        className='justify-between mx-6'>
         <HStack className='gap-3'>
           <View className='flex-row items-center gap-[4px]'>
             <Text>Eng</Text>
@@ -61,18 +69,23 @@ const index = () => {
         <Text>Login / Registration</Text>
       </HStack>
 
-      {/* navigation bar */}
+      {/* Navigation bar */}
       <View className='relative'>
         <HStack className='mx-6 py-[6px] mt-4 justify-between'>
           <Pressable
             onPress={() => setShowNavigationDrawer(!showNavigationDrawer)}>
             <MenuIcon />
           </Pressable>
+
+          {/* menu drawer start */}
+
+          {/* menu drawer end */}
+
           <Image
             source={require('../assets/images/shopiffyEcommerceLogo.png')}
           />
           <HStack className='gap-3'>
-            {/* gulestack drawer start */}
+            {/* search Drawer Start */}
             <Pressable onPress={() => setShowDrawer(true)}>
               <SearchIcon />
             </Pressable>
@@ -84,7 +97,14 @@ const index = () => {
               size='lg'
               anchor='right'>
               <DrawerBackdrop style={{ backgroundColor: 'transparent' }} />
-              <DrawerContent className={'mt-28 w-[95%]'}>
+              <DrawerContent
+                style={{
+                  position: 'absolute',
+                  top: topOffset,
+                  right: 0,
+                  width: '95%',
+                  backgroundColor: '#fff'
+                }}>
                 <DrawerHeader>
                   <Heading size='3xl'>Heading</Heading>
                 </DrawerHeader>
@@ -104,8 +124,7 @@ const index = () => {
                 </DrawerFooter>
               </DrawerContent>
             </Drawer>
-            {/* gulestack drawer end */}
-
+            {/* search Drawer End */}
             <Pressable>
               <ProfileIcon />
             </Pressable>
@@ -115,8 +134,8 @@ const index = () => {
           </HStack>
         </HStack>
 
-        {/* navigation drawer */}
-        <Animated.View
+        {/* Navigation drawer */}
+        {/* <Animated.View
           style={[
             drawerStyle,
             {
@@ -130,29 +149,38 @@ const index = () => {
             }
           ]}>
           <VStack className='gap-[15px]'>
-            <Pressable className='border-b-[1px] border-[#555353] h-10'>
+            <Pressable
+              className='border-b-[1px] h-10'
+              style={{ borderColor: 'rgba(85, 83, 83, 0.2)' }}>
               <Text className='text-lg'>Home</Text>
             </Pressable>
-            <Pressable className='border-b-[1px] border-[#555353] h-10'>
+            <Pressable
+              className='border-b-[1px] h-10'
+              style={{ borderColor: 'rgba(85, 83, 83, 0.2)' }}>
               <Text className='text-lg'>Categories</Text>
             </Pressable>
-            <Pressable className='border-b-[1px] border-[#555353] h-10'>
+            <Pressable
+              className='border-b-[1px] h-10'
+              style={{ borderColor: 'rgba(85, 83, 83, 0.2)' }}>
               <Text className='text-lg'>Shop</Text>
             </Pressable>
-            <Pressable className='border-b-[1px] border-[#555353] h-10'>
-              <Text className='text-lg'>Page</Text>
-            </Pressable>
-            <Pressable className='border-b-[1px] border-[#555353] h-10'>
+            <Pressable
+              className='border-b-[1px] h-10'
+              style={{ borderColor: 'rgba(85, 83, 83, 0.2)' }}>
               <Text className='text-lg'>Blog</Text>
             </Pressable>
-            <Pressable className='border-b-[1px] border-[#555353] h-10'>
+            <Pressable
+              className='border-b-[1px] h-10'
+              style={{ borderColor: 'rgba(85, 83, 83, 0.2)' }}>
               <Text className='text-lg'>Contact us</Text>
             </Pressable>
-            <Pressable className='border-b-[1px] border-[#555353] h-10'>
+            <Pressable
+              className='border-b-[1px] h-10'
+              style={{ borderColor: 'rgba(85, 83, 83, 0.2)' }}>
               <Text className='text-lg'>About us</Text>
             </Pressable>
           </VStack>
-        </Animated.View>
+        </Animated.View> */}
       </View>
     </SafeAreaView>
   )
