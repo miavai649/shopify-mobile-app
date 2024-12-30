@@ -43,7 +43,7 @@ const Navbar = () => {
           const { y, height } = event.nativeEvent.layout
           setTopOffset(y + height)
         }}
-        className='justify-between mx-6 mt-11'>
+        className='justify-between mx-6 mt-[5%]'>
         <HStack className='gap-3'>
           <View className='flex-row items-center gap-[4px]'>
             <Text>Eng</Text>
@@ -87,8 +87,6 @@ const Navbar = () => {
           </HStack>
         </HStack>
       </View>
-      {/* hero section */}
-      <CustomSlideshow />
     </SafeAreaView>
   )
 }

@@ -19,7 +19,8 @@ import { VStack } from './ui/vstack'
 import { Heading } from './ui/heading'
 import { Text } from './ui/text'
 
-const { width, height } = Dimensions.get('window')
+// Get screen height
+const { height: screenHeight } = Dimensions.get('window')
 
 const CustomSlideshow = () => {
   const images = [
@@ -63,33 +64,30 @@ const CustomSlideshow = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { height: screenHeight * 0.8 }]}>
       <ImageBackground
         source={images[currentIndex]}
-        style={styles.backgroundImage}
+        style={styles.imageBackground}
         resizeMode='cover'>
-        <VStack className='absolute top-[33%] m-8'>
-          <Heading className='text-[32px] font-bold line text-[#FDFDFD] leading-[45px] w-[55%]'>
+        <VStack style={styles.textContainer}>
+          <Heading style={styles.heading}>
             Luxury You Can Wear Style You Can Feel
           </Heading>
-          <Text className='text-[#FDFDFD] w-[50%] mt-2'>
+          <Text style={styles.text}>
             Experience elegance with every crafted for style that lasts forever
           </Text>
-          <Pressable className='border border-[#FDFDFD] px-4 py-3 mt-6 w-[23%]'>
-            <Text className='text-base font-semibold text-[#FDFDFD]'>
-              Shop Cloth Now
-            </Text>
+          <Pressable style={styles.button}>
+            <Text style={styles.buttonText}>Shop Cloth Now</Text>
           </Pressable>
         </VStack>
 
         {/* Image Navigation Buttons */}
         <View style={styles.buttonContainer}>
-          {/* Left arrow button */}
           <Pressable onPress={previousSlide}>
             <LeftArrowIcon />
           </Pressable>
 
-          <HStack className='gap-3'>
+          <HStack style={styles.dotContainer}>
             {images.map((_, index) => (
               <Pressable key={index} onPress={() => crossfade(index)}>
                 {currentIndex === index ? (
@@ -101,7 +99,6 @@ const CustomSlideshow = () => {
             ))}
           </HStack>
 
-          {/* Right arrow button */}
           <Pressable onPress={nextSlide}>
             <RightArrowIcon />
           </Pressable>
@@ -113,12 +110,43 @@ const CustomSlideshow = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    width: '100%',
+    flexShrink: 0
   },
-  backgroundImage: {
-    width,
-    height: height * 0.75,
+  imageBackground: {
+    width: '100%',
+    height: '100%',
     justifyContent: 'flex-end'
+  },
+  textContainer: {
+    position: 'absolute',
+    top: '33%',
+    marginHorizontal: 16
+  },
+  heading: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: '#FDFDFD',
+    lineHeight: 45,
+    width: '55%'
+  },
+  text: {
+    color: '#FDFDFD',
+    width: '50%',
+    marginTop: 8
+  },
+  button: {
+    borderColor: '#FDFDFD',
+    borderWidth: 1,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    marginTop: 24,
+    width: '25.5%'
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#FDFDFD'
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -126,6 +154,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     paddingVertical: 25,
     backgroundColor: 'rgba(0, 0, 0, 0.2)'
+  },
+  dotContainer: {
+    gap: 18
   }
 })
 
