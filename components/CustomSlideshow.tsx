@@ -1,17 +1,19 @@
+import React, { useState, useRef } from 'react'
+import {
+  View,
+  ImageBackground,
+  StyleSheet,
+  Dimensions,
+  Pressable,
+  Animated,
+  Easing
+} from 'react-native'
 import {
   FilledCircleIcon,
   LeftArrowIcon,
   OutlineCircleIcon,
   RightArrowIcon
 } from '@/assets/Icons'
-import React, { useState } from 'react'
-import {
-  View,
-  ImageBackground,
-  StyleSheet,
-  Dimensions,
-  Pressable
-} from 'react-native'
 import { HStack } from './ui/hstack'
 import { VStack } from './ui/vstack'
 import { Heading } from './ui/heading'
@@ -27,15 +29,37 @@ const CustomSlideshow = () => {
   ]
 
   const [currentIndex, setCurrentIndex] = useState(0)
+  const fadeAnim = useRef(new Animated.Value(1)).current
+  const nextImageAnim = useRef(new Animated.Value(0)).current
+
+  const crossfade = (newIndex: number) => {
+    fadeAnim.setValue(1)
+    nextImageAnim.setValue(0)
+
+    Animated.sequence([
+      Animated.timing(fadeAnim, {
+        toValue: 0,
+        duration: 600,
+        easing: Easing.inOut(Easing.ease),
+        useNativeDriver: true
+      }),
+      Animated.timing(nextImageAnim, {
+        toValue: 1,
+        duration: 600,
+        easing: Easing.inOut(Easing.ease),
+        useNativeDriver: true
+      })
+    ]).start(() => {
+      setCurrentIndex(newIndex)
+    })
+  }
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length)
+    crossfade((currentIndex + 1) % images.length)
   }
 
   const previousSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    )
+    crossfade(currentIndex === 0 ? images.length - 1 : currentIndex - 1)
   }
 
   return (
@@ -57,39 +81,27 @@ const CustomSlideshow = () => {
             </Text>
           </Pressable>
         </VStack>
-        <View style={styles.buttonContainer}>
-          {/* left arrow button */}
 
+        {/* Image Navigation Buttons */}
+        <View style={styles.buttonContainer}>
+          {/* Left arrow button */}
           <Pressable onPress={previousSlide}>
             <LeftArrowIcon />
           </Pressable>
 
           <HStack className='gap-3'>
-            <Pressable onPress={() => setCurrentIndex(0)}>
-              {currentIndex === 0 ? (
-                <OutlineCircleIcon />
-              ) : (
-                <FilledCircleIcon />
-              )}
-            </Pressable>
-            <Pressable onPress={() => setCurrentIndex(1)}>
-              {currentIndex === 1 ? (
-                <OutlineCircleIcon />
-              ) : (
-                <FilledCircleIcon />
-              )}
-            </Pressable>
-            <Pressable onPress={() => setCurrentIndex(2)}>
-              {currentIndex === 2 ? (
-                <OutlineCircleIcon />
-              ) : (
-                <FilledCircleIcon />
-              )}
-            </Pressable>
+            {images.map((_, index) => (
+              <Pressable key={index} onPress={() => crossfade(index)}>
+                {currentIndex === index ? (
+                  <OutlineCircleIcon />
+                ) : (
+                  <FilledCircleIcon />
+                )}
+              </Pressable>
+            ))}
           </HStack>
 
-          {/* right arrow button */}
-
+          {/* Right arrow button */}
           <Pressable onPress={nextSlide}>
             <RightArrowIcon />
           </Pressable>
@@ -104,7 +116,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
   backgroundImage: {
-    position: 'relative',
     width,
     height: height * 0.75,
     justifyContent: 'flex-end'
