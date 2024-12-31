@@ -9,6 +9,7 @@ import { LinearGradient } from 'expo-linear-gradient'
 import { VStack } from '../ui/vstack'
 import { Text } from '../ui/text'
 import { Button, ButtonText } from '../ui/button'
+import CustomButton from '../button'
 
 interface CollectionData {
   name: string
@@ -42,13 +43,12 @@ const CollectionCard = ({
           <Text className='text-xl font-semibold text-[#FDFDFD]'>
             {collectionData.name}
           </Text>
-          <Button
-            variant='outline'
-            className='rounded-none h-[44px] w-[128px] border-[#FDFDFD]'>
-            <ButtonText className='text-base font-semibold text-[#FDFDFD]'>
-              View Cart
-            </ButtonText>
-          </Button>
+
+          <CustomButton
+            btnText='View Collection'
+            btnStyle='border border-[#FDFDFD] py-3 px-4'
+            btnTextStyle='text-center text-base font-semibold text-[#FDFDFD]'
+          />
         </VStack>
       </ImageBackground>
     </View>
