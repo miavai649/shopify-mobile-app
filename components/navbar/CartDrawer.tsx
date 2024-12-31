@@ -137,7 +137,7 @@ const CartDrawer = () => {
                 {/* apply discount coupon input box */}
 
                 <CustomInput
-                  inputStyle='border-[rgba(85, 83, 83, 0.20)] h-[58px] p-0 px-4'
+                  inputStyle='border-[rgba(85, 83, 83, 0.20)] h-[58px] p-0 px-4 rounded-none'
                   inputFieldStyle='p-0 text-base text-[rgba(85, 83, 83, 0.40)]'
                   placeholderText='Have any coupon code?'
                   inputSlotContent={

@@ -14,6 +14,7 @@ import { Image } from 'react-native'
 import { Input, InputField, InputIcon, InputSlot } from '../ui/input'
 import { Heading } from '../ui/heading'
 import { SearchIcon } from 'lucide-react-native'
+import CustomInput from '../form/input'
 
 const SearchDrawer = ({ topOffset }: any) => {
   const [searchDrawer, setSearchDrawer] = useState(false)
@@ -53,12 +54,15 @@ const SearchDrawer = ({ topOffset }: any) => {
                   <SvgIcon iconName='close' />
                 </Pressable>
               </HStack>
-              <Input className='border-[#FCC5C5] h-[45px]'>
-                <InputSlot className='pl-3'>
-                  <InputIcon as={SearchIcon} />
-                </InputSlot>
-                <InputField placeholder='Search...' />
-              </Input>
+
+              {/* product search box */}
+              <CustomInput
+                inputStyle='border-[#FCC5C5] h-[45px] rounded-none'
+                placeholderText='Search...'
+                inputSlotStyle='pl-3'
+                inputSlotContent={<InputIcon as={SearchIcon} />}
+                inputSlotPosition='left'
+              />
             </VStack>
           </DrawerHeader>
           <DrawerBody className='p-0 m-0'>
