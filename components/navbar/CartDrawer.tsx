@@ -23,6 +23,21 @@ import CustomButton from '../button'
 const CartDrawer = () => {
   const [cartDrawer, setCartDrawer] = useState(false)
 
+  const products = [
+    {
+      id: 1,
+      name: 'Velvet Edge T-Shirt',
+      price: '65.38',
+      image: require('../../assets/images/white-shirt.png')
+    },
+    {
+      id: 2,
+      name: 'Jacket',
+      price: '65.38',
+      image: require('../../assets/images/white-frok.png')
+    }
+  ]
+
   return (
     <>
       <Pressable
@@ -75,7 +90,15 @@ const CartDrawer = () => {
                 </VStack>
 
                 {/* added products */}
-                <CartCard />
+                <VStack className='gap-4'>
+                  {products.map((product) => (
+                    <CartCard
+                      key={product.id}
+                      product={product}
+                      asQuickView={false}
+                    />
+                  ))}
+                </VStack>
 
                 {/* suggested products */}
                 <VStack className='px-6 py-4 gap-3 bg-[#F2F2F2]'>
