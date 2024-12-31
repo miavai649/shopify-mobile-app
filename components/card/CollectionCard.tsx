@@ -5,7 +5,7 @@ import {
   ImageSourcePropType,
   StyleSheet
 } from 'react-native'
-import { LinearGradient } from 'expo-linear-gradient' // Import LinearGradient
+import { LinearGradient } from 'expo-linear-gradient'
 import { VStack } from '../ui/vstack'
 import { Text } from '../ui/text'
 import { Button, ButtonText } from '../ui/button'
@@ -58,16 +58,16 @@ const CollectionCard = ({
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: 520, // Fixed height for the container
-    overflow: 'hidden' // Ensure the image doesn't overflow the container
+    height: 520,
+    overflow: 'hidden'
   },
   imageBackground: {
     width: '100%',
     height: '100%'
   },
   gradientOverlay: {
-    ...StyleSheet.absoluteFillObject, // Makes the gradient fill the entire container
-    zIndex: 1 // Ensures it sits behind the text content
+    ...StyleSheet.absoluteFillObject,
+    zIndex: 1
   },
   vstack: {
     position: 'absolute',
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     gap: 8,
-    zIndex: 2 // Places it above the gradient
+    zIndex: 2
   }
 })
 

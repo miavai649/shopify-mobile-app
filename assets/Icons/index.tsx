@@ -11,7 +11,7 @@ import Svg, {
 
 interface SvgComponentProps extends SvgProps {}
 
-export const DropdownIcon = (props: SvgComponentProps) => (
+const DropdownIcon = (props: SvgComponentProps) => (
   <Svg width={24} height={24} viewBox='0 0 24 24' fill='none' {...props}>
     <Path
       d='M7 10L12 15L17 10'
@@ -23,7 +23,7 @@ export const DropdownIcon = (props: SvgComponentProps) => (
   </Svg>
 )
 
-export const MenuIcon = (props: SvgComponentProps) => (
+const MenuIcon = (props: SvgComponentProps) => (
   <Svg width={28} height={28} viewBox='0 0 28 28' fill='none' {...props}>
     <Path
       d='M4.66602 7H23.3327M4.66602 14H23.3327M4.66602 21H23.3327'
@@ -35,7 +35,7 @@ export const MenuIcon = (props: SvgComponentProps) => (
   </Svg>
 )
 
-export const SearchIcon = (props: SvgComponentProps) => (
+const SearchIcon = (props: SvgComponentProps) => (
   <Svg width={28} height={28} viewBox='0 0 28 28' fill='none' {...props}>
     <Path
       fillRule='evenodd'
@@ -56,7 +56,7 @@ export const SearchIcon = (props: SvgComponentProps) => (
   </Svg>
 )
 
-export const ProfileIcon = (props: SvgComponentProps) => (
+const ProfileIcon = (props: SvgComponentProps) => (
   <Svg width={28} height={28} viewBox='0 0 28 28' fill='none' {...props}>
     <Path
       fillRule='evenodd'
@@ -79,7 +79,7 @@ export const ProfileIcon = (props: SvgComponentProps) => (
   </Svg>
 )
 
-export const CartIcon = (props: SvgComponentProps) => (
+const CartIcon = (props: SvgComponentProps) => (
   <Svg width={28} height={28} viewBox='0 0 24 24' fill='none' {...props}>
     <Path
       fillRule='evenodd'
@@ -115,7 +115,7 @@ export const CartIcon = (props: SvgComponentProps) => (
   </Svg>
 )
 
-export const CloseIcon = (props: SvgComponentProps) => (
+const CloseIcon = (props: SvgComponentProps) => (
   <Svg width={16} height={16} viewBox='0 0 16 16' fill='none' {...props}>
     <Path
       d='M1.14735 14.8521C1.19379 14.8986 1.24893 14.9354 1.30963 14.9606C1.37033 14.9858 1.43539 14.9987 1.5011 14.9987C1.56681 14.9987 1.63187 14.9858 1.69257 14.9606C1.75327 14.9354 1.80841 14.8986 1.85485 14.8521L7.99985 8.70708L14.1473 14.8521C14.2412 14.9459 14.3684 14.9986 14.5011 14.9986C14.6338 14.9986 14.761 14.9459 14.8548 14.8521C14.9487 14.7583 15.0014 14.631 15.0014 14.4983C15.0014 14.3656 14.9487 14.2384 14.8548 14.1446L8.70735 7.99957L14.8523 1.85207C14.9462 1.75825 14.9989 1.63101 14.9989 1.49832C14.9989 1.36564 14.9462 1.2384 14.8523 1.14457C14.7585 1.05075 14.6313 0.998047 14.4986 0.998047C14.3659 0.998047 14.2387 1.05075 14.1448 1.14457L7.99985 7.29208L1.85235 1.14707C1.7567 1.06516 1.63366 1.02236 1.50782 1.02722C1.38198 1.03208 1.26262 1.08425 1.17357 1.17329C1.08452 1.26234 1.03235 1.38171 1.02749 1.50755C1.02263 1.63339 1.06544 1.75642 1.14735 1.85207L7.29235 7.99957L1.14735 14.1471C1.05422 14.2408 1.00195 14.3675 1.00195 14.4996C1.00195 14.6317 1.05422 14.7584 1.14735 14.8521Z'
@@ -124,28 +124,7 @@ export const CloseIcon = (props: SvgComponentProps) => (
   </Svg>
 )
 
-export const SmallSearchIcon = (props: SvgComponentProps) => (
-  <Svg width={21} height={21} viewBox='0 0 21 21' fill='none' {...props}>
-    <Path
-      fillRule='evenodd'
-      clipRule='evenodd'
-      d='M4.86328 9.13662C4.8633 6.84463 6.48241 4.87184 8.73039 4.42478C10.9784 3.97772 13.2291 5.18092 14.106 7.29851C14.983 9.4161 14.242 11.8583 12.3361 13.1315C10.4302 14.4046 7.89043 14.1542 6.26995 12.5333C5.36925 11.6324 4.86327 10.4106 4.86328 9.13662Z'
-      stroke='#555353'
-      strokeWidth={1.5}
-      strokeLinecap='round'
-      strokeLinejoin='round'
-    />
-    <Path
-      d='M14.4727 13.9414L16.5318 16.0006'
-      stroke='#555353'
-      strokeWidth={1.5}
-      strokeLinecap='round'
-      strokeLinejoin='round'
-    />
-  </Svg>
-)
-
-export const LeftArrowIcon = (props: SvgComponentProps) => (
+const LeftArrowIcon = (props: SvgComponentProps) => (
   <Svg width={32} height={32} viewBox='0 0 32 32' fill='none' {...props}>
     <G clipPath='url(#clip0_1233_8863)'>
       <Path
@@ -166,7 +145,7 @@ export const LeftArrowIcon = (props: SvgComponentProps) => (
   </Svg>
 )
 
-export const RightArrowIcon = (props: SvgComponentProps) => (
+const RightArrowIcon = (props: SvgComponentProps) => (
   <Svg width={32} height={32} viewBox='0 0 32 32' fill='none' {...props}>
     <G clipPath='url(#clip0_1233_8871)'>
       <Path
@@ -182,19 +161,19 @@ export const RightArrowIcon = (props: SvgComponentProps) => (
   </Svg>
 )
 
-export const FilledCircleIcon = (props: SvgComponentProps) => (
+const FilledCircleIcon = (props: SvgComponentProps) => (
   <Svg width={7} height={7} viewBox='0 0 7 7' fill='none' {...props}>
     <Circle cx={3.5} cy={3.14062} r={3} fill='#FDFDFD' />
   </Svg>
 )
 
-export const OutlineCircleIcon = (props: SvgComponentProps) => (
+const OutlineCircleIcon = (props: SvgComponentProps) => (
   <Svg width={7} height={7} viewBox='0 0 7 7' fill='none' {...props}>
     <Circle cx={3.5} cy={3.14062} r={2.5} stroke='#FDFDFD' />
   </Svg>
 )
 
-export const TruckIcon = (props: SvgComponentProps) => (
+const TruckIcon = (props: SvgComponentProps) => (
   <Svg width={24} height={24} viewBox='0 0 24 24' fill='none' {...props}>
     <G clipPath='url(#clip0_514_4020)'>
       <Path
@@ -246,7 +225,7 @@ export const TruckIcon = (props: SvgComponentProps) => (
   </Svg>
 )
 
-export const MinusIcon = (props: SvgComponentProps) => (
+const MinusIcon = (props: SvgComponentProps) => (
   <Svg width={12} height={12} viewBox='0 0 12 12' fill='none' {...props}>
     <Path
       d='M1.50089 5.5C1.37017 5.50286 1.24578 5.55678 1.15435 5.65023C1.06292 5.74369 1.01172 5.86926 1.01172 6.00001C1.01172 6.13075 1.06292 6.25627 1.15435 6.34972C1.24578 6.44318 1.37017 6.49715 1.50089 6.50002H10.4989C10.6296 6.49715 10.754 6.44318 10.8455 6.34972C10.9369 6.25627 10.9881 6.13075 10.9881 6.00001C10.9881 5.86926 10.9369 5.74369 10.8455 5.65023C10.754 5.55678 10.6296 5.50286 10.4989 5.5H1.50089Z'
@@ -255,7 +234,7 @@ export const MinusIcon = (props: SvgComponentProps) => (
   </Svg>
 )
 
-export const PlushIcon = (props: SvgComponentProps) => (
+const PlushIcon = (props: SvgComponentProps) => (
   <Svg width={12} height={12} viewBox='0 0 12 12' fill='none' {...props}>
     <G clipPath='url(#clip0_514_4081)'>
       <Path
@@ -275,7 +254,7 @@ export const PlushIcon = (props: SvgComponentProps) => (
   </Svg>
 )
 
-export const TrashIcon = (props: SvgComponentProps) => (
+const TrashIcon = (props: SvgComponentProps) => (
   <Svg width={20} height={20} viewBox='0 0 20 20' fill='none' {...props}>
     <G opacity={0.6}>
       <Path
@@ -298,7 +277,7 @@ export const TrashIcon = (props: SvgComponentProps) => (
   </Svg>
 )
 
-export const LeftIcon = (props: SvgComponentProps) => (
+const LeftIcon = (props: SvgComponentProps) => (
   <Svg width={18} height={18} viewBox='0 0 18 18' fill='none' {...props}>
     <G opacity={0.6} clipPath='url(#clip0_514_4096)'>
       <Path
@@ -319,7 +298,7 @@ export const LeftIcon = (props: SvgComponentProps) => (
   </Svg>
 )
 
-export const RightIcon = (props: SvgComponentProps) => (
+const RightIcon = (props: SvgComponentProps) => (
   <Svg width={18} height={18} viewBox='0 0 18 18' fill='none' {...props}>
     <G clipPath='url(#clip0_514_4100)'>
       <Path
@@ -334,3 +313,44 @@ export const RightIcon = (props: SvgComponentProps) => (
     </Defs>
   </Svg>
 )
+
+const SvgIcon = ({ iconName }: { iconName: string }) => {
+  switch (iconName) {
+    case 'dropdown':
+      return <DropdownIcon />
+    case 'menu':
+      return <MenuIcon />
+    case 'search':
+      return <SearchIcon />
+    case 'profile':
+      return <ProfileIcon />
+    case 'cart':
+      return <CartIcon />
+    case 'close':
+      return <CloseIcon />
+    case 'leftArrow':
+      return <LeftArrowIcon />
+    case 'rightArrow':
+      return <RightArrowIcon />
+    case 'filedCircle':
+      return <FilledCircleIcon />
+    case 'outlineCircle':
+      return <OutlineCircleIcon />
+    case 'truck':
+      return <TruckIcon />
+    case 'minus':
+      return <MinusIcon />
+    case 'plush':
+      return <PlushIcon />
+    case 'trash':
+      return <TrashIcon />
+    case 'left':
+      return <LeftIcon />
+    case 'right':
+      return <RightIcon />
+    default:
+      return null
+  }
+}
+
+export default SvgIcon

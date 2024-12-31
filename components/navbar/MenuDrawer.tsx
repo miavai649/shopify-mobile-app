@@ -1,4 +1,4 @@
-import { MenuIcon } from '@/assets/Icons'
+import SvgIcon from '@/assets/Icons'
 import React, { useState } from 'react'
 import { Pressable } from 'react-native'
 import { Drawer, DrawerBackdrop, DrawerContent } from '../ui/drawer'
@@ -13,7 +13,7 @@ const MenuDrawer = ({ combinedHeight }: any) => {
         onPress={() => {
           setShowDrawer(true)
         }}>
-        <MenuIcon />
+        <SvgIcon iconName='menu' />
       </Pressable>
       <Drawer
         isOpen={showDrawer}

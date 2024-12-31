@@ -8,12 +8,7 @@ import {
   Animated,
   Easing
 } from 'react-native'
-import {
-  FilledCircleIcon,
-  LeftArrowIcon,
-  OutlineCircleIcon,
-  RightArrowIcon
-} from '@/assets/Icons'
+import SvgIcon from '@/assets/Icons'
 import { HStack } from './ui/hstack'
 import { VStack } from './ui/vstack'
 import { Heading } from './ui/heading'
@@ -84,23 +79,23 @@ const CustomSlideshow = () => {
         {/* Image Navigation Buttons */}
         <View style={styles.buttonContainer}>
           <Pressable onPress={previousSlide}>
-            <LeftArrowIcon />
+            <SvgIcon iconName='leftArrow' />
           </Pressable>
 
           <HStack style={styles.dotContainer}>
             {images.map((_, index) => (
               <Pressable key={index} onPress={() => crossfade(index)}>
                 {currentIndex === index ? (
-                  <OutlineCircleIcon />
+                  <SvgIcon iconName='outlineCircle' />
                 ) : (
-                  <FilledCircleIcon />
+                  <SvgIcon iconName='filedCircle' />
                 )}
               </Pressable>
             ))}
           </HStack>
 
           <Pressable onPress={nextSlide}>
-            <RightArrowIcon />
+            <SvgIcon iconName='rightArrow' />
           </Pressable>
         </View>
       </ImageBackground>

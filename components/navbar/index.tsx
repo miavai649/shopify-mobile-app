@@ -2,19 +2,6 @@ import { View, Text, Pressable, Image } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { HStack } from '@/components/ui/hstack'
-import {
-  CartIcon,
-  CloseIcon,
-  DropdownIcon,
-  MenuIcon,
-  MinusIcon,
-  PlushIcon,
-  ProfileIcon,
-  SearchIcon,
-  SmallSearchIcon,
-  TrashIcon,
-  TruckIcon
-} from '@/assets/Icons'
 
 import { Heading } from '@/components/ui/heading'
 import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input'
@@ -24,6 +11,7 @@ import SearchDrawer from './SearchDrawer'
 import { Divider } from '../ui/divider'
 import { Progress, ProgressFilledTrack } from '../ui/progress'
 import CartDrawer from './CartDrawer'
+import SvgIcon from '@/assets/Icons'
 const Navbar = () => {
   const [topOffset, setTopOffset] = useState(0)
   const topSectionRef = useRef(null)
@@ -47,11 +35,11 @@ const Navbar = () => {
         <HStack className='gap-3'>
           <View className='flex-row items-center gap-[4px]'>
             <Text>Eng</Text>
-            <DropdownIcon />
+            <SvgIcon iconName='dropdown' />
           </View>
           <View className='flex-row items-center gap-[4px]'>
             <Text>USD</Text>
-            <DropdownIcon />
+            <SvgIcon iconName='dropdown' />
           </View>
         </HStack>
         <Text>Login / Registration</Text>
@@ -77,7 +65,7 @@ const Navbar = () => {
             <SearchDrawer topOffset={topOffset} />
             {/* search Drawer End */}
             <Pressable>
-              <ProfileIcon />
+              <SvgIcon iconName='profile' />
             </Pressable>
 
             {/* cart drawer start */}

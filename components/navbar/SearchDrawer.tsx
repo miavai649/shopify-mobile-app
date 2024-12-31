@@ -1,6 +1,6 @@
 import { View, Text, Pressable } from 'react-native'
 import React, { useState } from 'react'
-import { CloseIcon, SearchIcon, SmallSearchIcon } from '@/assets/Icons'
+import SvgIcon from '@/assets/Icons'
 import {
   Drawer,
   DrawerBackdrop,
@@ -13,6 +13,7 @@ import { HStack } from '../ui/hstack'
 import { Image } from 'react-native'
 import { Input, InputField, InputIcon, InputSlot } from '../ui/input'
 import { Heading } from '../ui/heading'
+import { SearchIcon } from 'lucide-react-native'
 
 const SearchDrawer = ({ topOffset }: any) => {
   const [searchDrawer, setSearchDrawer] = useState(false)
@@ -20,7 +21,7 @@ const SearchDrawer = ({ topOffset }: any) => {
   return (
     <>
       <Pressable onPress={() => setSearchDrawer(true)}>
-        <SearchIcon />
+        <SvgIcon iconName='search' />
       </Pressable>
       <Drawer
         isOpen={searchDrawer}
@@ -49,12 +50,12 @@ const SearchDrawer = ({ topOffset }: any) => {
                   onPress={() => {
                     setSearchDrawer(false)
                   }}>
-                  <CloseIcon />
+                  <SvgIcon iconName='close' />
                 </Pressable>
               </HStack>
               <Input className='border-[#FCC5C5] h-[45px]'>
                 <InputSlot className='pl-3'>
-                  <InputIcon as={SmallSearchIcon} />
+                  <InputIcon as={SearchIcon} />
                 </InputSlot>
                 <InputField placeholder='Search...' />
               </Input>

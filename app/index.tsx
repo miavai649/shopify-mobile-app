@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, View } from 'react-native'
 import CustomSlideshow from '@/components/CustomSlideshow'
 import Navbar from '@/components/navbar'
 import PopularProducts from '@/components/popularProduct'
+import OfferSection from '@/components/offerSection'
 
 const index = () => {
   return (
@@ -16,6 +17,9 @@ const index = () => {
 
         {/* popular products section */}
         <PopularProducts />
+
+        {/* offer section */}
+        <OfferSection />
       </ScrollView>
     </View>
   )

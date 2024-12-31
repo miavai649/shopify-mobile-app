@@ -8,21 +8,7 @@ import {
   DrawerHeader
 } from '@/components/ui/drawer'
 import { VStack } from '@/components/ui/vstack'
-import {
-  CartIcon,
-  CloseIcon,
-  DropdownIcon,
-  LeftIcon,
-  MenuIcon,
-  MinusIcon,
-  PlushIcon,
-  ProfileIcon,
-  RightIcon,
-  SearchIcon,
-  SmallSearchIcon,
-  TrashIcon,
-  TruckIcon
-} from '@/assets/Icons'
+
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { HStack } from '../ui/hstack'
 import { Heading } from '../ui/heading'
@@ -31,6 +17,7 @@ import { Progress, ProgressFilledTrack } from '../ui/progress'
 import CartCard from '../card/CartCard'
 import { Input, InputField, InputSlot } from '../ui/input'
 import { Button, ButtonText } from '../ui/button'
+import SvgIcon from '@/assets/Icons'
 
 const CartDrawer = () => {
   const [cartDrawer, setCartDrawer] = useState(false)
@@ -41,7 +28,7 @@ const CartDrawer = () => {
         onPress={() => {
           setCartDrawer(true)
         }}>
-        <CartIcon />
+        <SvgIcon iconName='cart' />
       </Pressable>
       <Drawer
         isOpen={cartDrawer}
@@ -60,7 +47,7 @@ const CartDrawer = () => {
                   onPress={() => {
                     setCartDrawer(false)
                   }}>
-                  <CloseIcon />
+                  <SvgIcon iconName='close' />
                 </Pressable>
               </HStack>
             </DrawerHeader>
@@ -70,7 +57,7 @@ const CartDrawer = () => {
                 {/* announcement */}
                 <VStack className='gap-2'>
                   <HStack>
-                    <TruckIcon />
+                    <SvgIcon iconName='truck' />
                     <Text className='text-base text-[#555353]'>
                       Spend{' '}
                       <Text className='text-[#0E0C0C]'>$1500.45 more</Text> to
@@ -97,8 +84,8 @@ const CartDrawer = () => {
                       You May Also Like
                     </Text>
                     <HStack className='gap-5'>
-                      <LeftIcon />
-                      <RightIcon />
+                      <SvgIcon iconName='left' />
+                      <SvgIcon iconName='right' />
                     </HStack>
                   </HStack>
                   {/* products */}
