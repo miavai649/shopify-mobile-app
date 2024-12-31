@@ -10,27 +10,49 @@ const OfferSection = () => {
     <View style={styles.container}>
       <ImageBackground
         source={require('../../assets/images/blonde-woman-checking-new-clothes.png')}
-        resizeMode='cover' // Use 'cover' for full background coverage
+        resizeMode='cover'
         style={styles.imageBackground}>
-        <VStack style={styles.content}>
-          <Heading style={styles.heading}>45% OFF</Heading>
-          <Text style={styles.subtext}>Save extra on our sale collection</Text>
-          <HStack style={styles.timerContainer}>
-            <VStack style={styles.timerBox}>
-              <Text style={styles.timerValue}>02</Text>
-              <Text style={styles.timerLabel}>Days</Text>
+        <VStack className='gap-8'>
+          <View>
+            <Heading className='text-[56px] leading-[67px] text-white text-center'>
+              45% OFF
+            </Heading>
+            <Text className='text-lg leading-[25px] text-white text-center'>
+              Save extra on our sale collection
+            </Text>
+          </View>
+          <HStack className='gap-3'>
+            <VStack className='border border-[#FDFDFD] px-[20px] justify-center items-center'>
+              <Text className='text-white text-[32px] font-bold leading-[44.8px]'>
+                02
+              </Text>
+              <Text className='text-[14px] font-normal leading-[21px] text-white text-center'>
+                Days
+              </Text>
             </VStack>
-            <VStack style={styles.timerBox}>
-              <Text style={styles.timerValue}>19</Text>
-              <Text style={styles.timerLabel}>Hours</Text>
+            <VStack className='border border-[#FDFDFD] px-[20px] justify-center items-center'>
+              <Text className='text-white text-[32px] font-bold leading-[44.8px]'>
+                19
+              </Text>
+              <Text className='text-[14px] font-normal leading-[21px] text-white text-center'>
+                Hours
+              </Text>
             </VStack>
-            <VStack style={styles.timerBox}>
-              <Text style={styles.timerValue}>57</Text>
-              <Text style={styles.timerLabel}>Minutes</Text>
+            <VStack className='border border-[#FDFDFD] px-[20px] justify-center items-center'>
+              <Text className='text-white text-[32px] font-bold leading-[44.8px]'>
+                57
+              </Text>
+              <Text className='text-[14px] font-normal leading-[21px] text-white text-center'>
+                Minutes
+              </Text>
             </VStack>
-            <VStack style={styles.timerBox}>
-              <Text style={styles.timerValue}>45</Text>
-              <Text style={styles.timerLabel}>Seconds</Text>
+            <VStack className='border border-[#FDFDFD] px-[20px] justify-center items-center'>
+              <Text className='text-white text-[32px] font-bold leading-[44.8px]'>
+                45
+              </Text>
+              <Text className='text-[14px] font-normal leading-[21px] text-white text-center'>
+                Seconds
+              </Text>
             </VStack>
           </HStack>
         </VStack>
@@ -42,14 +64,15 @@ const OfferSection = () => {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: 320, // Ensure a fixed height or dynamically adjust as needed
-    overflow: 'hidden'
+    height: 380,
+    overflow: 'hidden',
+    marginTop: 50
   },
   imageBackground: {
     width: '100%',
     height: '100%',
-    justifyContent: 'center', // Center the content
-    alignItems: 'center' // Center the content
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   content: {
     padding: 16
