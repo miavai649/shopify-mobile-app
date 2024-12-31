@@ -13,6 +13,7 @@ import { HStack } from './ui/hstack'
 import { VStack } from './ui/vstack'
 import { Heading } from './ui/heading'
 import { Text } from './ui/text'
+import CustomButton from './button'
 
 // Get screen height
 const { height: screenHeight } = Dimensions.get('window')
@@ -71,9 +72,11 @@ const CustomSlideshow = () => {
           <Text style={styles.text}>
             Experience elegance with every crafted for style that lasts forever
           </Text>
-          <Pressable style={styles.button}>
-            <Text style={styles.buttonText}>Shop Cloth Now</Text>
-          </Pressable>
+          <CustomButton
+            btnText='Shop Cloth Now'
+            btnStyle='border border-[#FDFDFD] mt-6 px-4 py-3 self-start'
+            btnTextStyle='text-[#FDFDFD] text-base font-semibold'
+          />
         </VStack>
 
         {/* Image Navigation Buttons */}
