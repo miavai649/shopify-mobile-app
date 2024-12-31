@@ -19,6 +19,7 @@ import { Input, InputField, InputSlot } from '../ui/input'
 import { Button, ButtonText } from '../ui/button'
 import SvgIcon from '@/assets/Icons'
 import CustomButton from '../button'
+import CustomInput from '../form/input'
 
 const CartDrawer = () => {
   const [cartDrawer, setCartDrawer] = useState(false)
@@ -134,17 +135,18 @@ const CartDrawer = () => {
                 </VStack>
 
                 {/* apply discount coupon input box */}
-                <Input className='border-[rgba(85, 83, 83, 0.20)] h-[58px] p-0 px-4'>
-                  <InputField
-                    className='p-0 text-base text-[rgba(85, 83, 83, 0.40)]'
-                    placeholder='Have any coupon code?'
-                  />
-                  <InputSlot>
+
+                <CustomInput
+                  inputStyle='border-[rgba(85, 83, 83, 0.20)] h-[58px] p-0 px-4'
+                  inputFieldStyle='p-0 text-base text-[rgba(85, 83, 83, 0.40)]'
+                  placeholderText='Have any coupon code?'
+                  inputSlotContent={
                     <Text className='text-base font-semibold text-[#F64343]'>
                       Apply
                     </Text>
-                  </InputSlot>
-                </Input>
+                  }
+                  inputSlotPosition='right'
+                />
 
                 {/* subtotal section */}
                 <VStack>
