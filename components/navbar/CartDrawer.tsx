@@ -18,6 +18,7 @@ import CartCard from '../card/CartCard'
 import { Input, InputField, InputSlot } from '../ui/input'
 import { Button, ButtonText } from '../ui/button'
 import SvgIcon from '@/assets/Icons'
+import CustomButton from '../button'
 
 const CartDrawer = () => {
   const [cartDrawer, setCartDrawer] = useState(false)
@@ -135,18 +136,16 @@ const CartDrawer = () => {
                     Taxes and shipping calculated at checkout
                   </Text>
                   <HStack className='justify-between gap-6 mt-4'>
-                    <Button
-                      className='flex-1 rounded-none h-12'
-                      variant='outline'>
-                      <ButtonText className='text-lg font-semibold'>
-                        View Cart
-                      </ButtonText>
-                    </Button>
-                    <Button className='flex-1 rounded-none h-12 bg-[#F64343]'>
-                      <ButtonText className='text-lg font-semibold'>
-                        checkout
-                      </ButtonText>
-                    </Button>
+                    <CustomButton
+                      btnText='View Cart'
+                      btnTextStyle='text-lg font-semibold text-center'
+                      btnStyle='flex-1 rounded-none py-[10px] px-4 border border-[#0E0C0C]'
+                    />
+                    <CustomButton
+                      btnText='Checkout'
+                      btnTextStyle='text-lg font-semibold text-center text-[#FDFDFD]'
+                      btnStyle='flex-1 rounded-none py-[10px] px-4 bg-[#F64343]'
+                    />
                   </HStack>
                 </VStack>
               </VStack>
