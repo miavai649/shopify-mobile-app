@@ -10,6 +10,7 @@ import { Heading } from '@/components/ui/heading'
 import { Text } from '@/components/ui/text'
 import CustomButton from '@/components/button'
 import Blog from '@/components/Blog'
+import Blog2 from '@/components/blog2/Index'
 
 const index = () => {
   // banner slideshow images
@@ -57,6 +58,9 @@ const index = () => {
 
         {/* blog */}
         <Blog />
+
+        {/* blog 2 */}
+        <Blog2 />
       </ScrollView>
     </View>
   )
