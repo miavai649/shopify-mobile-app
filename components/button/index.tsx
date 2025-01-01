@@ -1,23 +1,27 @@
 import { Pressable } from 'react-native'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { Text } from '../ui/text'
 
 interface BtnProps {
-  btnText: string
+  btnText?: string
   btnStyle: string
-  btnTextStyle: string
+  btnTextStyle?: string
   handleFunction?: () => void
+  buttonIcon?: ReactNode
+  isIconBtn?: boolean
 }
 
 const CustomButton = ({
   btnText,
   btnStyle,
   btnTextStyle,
-  handleFunction
+  handleFunction,
+  buttonIcon,
+  isIconBtn
 }: BtnProps) => {
   return (
     <Pressable className={btnStyle} onPress={handleFunction}>
-      <Text className={btnTextStyle}>{btnText}</Text>
+      {isIconBtn ? buttonIcon : <Text className={btnTextStyle}>{btnText}</Text>}
     </Pressable>
   )
 }

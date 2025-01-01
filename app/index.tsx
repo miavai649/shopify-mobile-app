@@ -4,6 +4,7 @@ import CustomSlideshow from '@/components/CustomSlideshow'
 import Navbar from '@/components/navbar'
 import PopularProducts from '@/components/popularProduct'
 import OfferSection from '@/components/offerSection'
+import FeaturedProduct from '@/components/featuredProduct'
 
 const index = () => {
   return (
@@ -20,6 +21,9 @@ const index = () => {
 
         {/* offer section */}
         <OfferSection />
+
+        {/* featured products */}
+        <FeaturedProduct />
       </ScrollView>
     </View>
   )
