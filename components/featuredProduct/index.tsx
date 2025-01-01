@@ -65,7 +65,7 @@ const FeaturedProduct = () => {
       </HStack>
 
       <Grid
-        className='gap-6 px-6'
+        className='gap-6 px-6 mb-6'
         _extra={{
           className: 'grid-cols-2'
         }}>
@@ -73,11 +73,17 @@ const FeaturedProduct = () => {
           <GridItem
             key={index}
             _extra={{ className: 'col-span-1' }}
-            className='w-full  flex-1'>
+            className='w-full flex-1'>
             <ProductCard product={product} />
           </GridItem>
         ))}
       </Grid>
+
+      <CustomButton
+        btnText='See More'
+        btnStyle='py-3 px-4 border border-[#F64343] self-center'
+        btnTextStyle='text-base font-semibold leading-6 text-[#F64343]'
+      />
     </View>
   )
 }
