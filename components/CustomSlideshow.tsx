@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef, ReactNode, useReducer } from 'react'
 import {
   View,
   ImageBackground,
@@ -6,28 +6,35 @@ import {
   Dimensions,
   Pressable,
   Animated,
-  Easing
+  Easing,
+  ImageSourcePropType
 } from 'react-native'
 import SvgIcon from '@/assets/Icons'
 import { HStack } from './ui/hstack'
-import { VStack } from './ui/vstack'
-import { Heading } from './ui/heading'
-import { Text } from './ui/text'
-import CustomButton from './button'
+import {
+  initialState,
+  slideShowReducer
+} from '@/hooks/reducer/slideShowReducer'
 
 // Get screen height
 const { height: screenHeight } = Dimensions.get('window')
 
-const CustomSlideshow = () => {
-  const images = [
-    require('../assets/images/hero-1.png'),
-    require('../assets/images/hero-2.png'),
-    require('../assets/images/hero-3.png')
-  ]
+interface CustomSlideShowProps {
+  slideshowContent: ReactNode
+  images: ImageSourcePropType[]
+  slideshowHeight?: any
+}
 
-  const [currentIndex, setCurrentIndex] = useState(0)
+const CustomSlideshow = ({
+  slideshowContent,
+  images,
+  slideshowHeight
+}: CustomSlideShowProps) => {
   const fadeAnim = useRef(new Animated.Value(1)).current
   const nextImageAnim = useRef(new Animated.Value(0)).current
+
+  // Use reducer for slide management
+  const [state, dispatch] = useReducer(slideShowReducer, initialState)
 
   const crossfade = (newIndex: number) => {
     fadeAnim.setValue(1)
@@ -47,38 +54,29 @@ const CustomSlideshow = () => {
         useNativeDriver: true
       })
     ]).start(() => {
-      setCurrentIndex(newIndex)
+      dispatch({ type: 'NEXT_SLIDE', payload: images.length }) // Update state after animation
     })
   }
 
   const nextSlide = () => {
-    crossfade((currentIndex + 1) % images.length)
+    dispatch({ type: 'NEXT_SLIDE', payload: images.length })
   }
 
   const previousSlide = () => {
-    crossfade(currentIndex === 0 ? images.length - 1 : currentIndex - 1)
+    dispatch({ type: 'PREV_SLIDE', payload: images.length })
   }
 
   return (
-    <View style={[styles.container, { height: screenHeight * 0.8 }]}>
+    <View
+      style={[
+        styles.container,
+        { height: slideshowHeight ? slideshowHeight : screenHeight * 0.8 }
+      ]}>
       <ImageBackground
-        source={images[currentIndex]}
+        source={images[state.currentIndex]}
         style={styles.imageBackground}
         resizeMode='cover'>
-        <VStack style={styles.textContainer}>
-          <Heading style={styles.heading}>
-            Luxury You Can Wear Style You Can Feel
-          </Heading>
-          <Text style={styles.text}>
-            Experience elegance with every crafted for style that lasts forever
-          </Text>
-          <CustomButton
-            btnText='Shop Cloth Now'
-            btnStyle='border border-[#FDFDFD] mt-6 px-4 py-3 self-start'
-            btnTextStyle='text-[#FDFDFD] text-base font-semibold'
-          />
-        </VStack>
-
+        {slideshowContent}
         {/* Image Navigation Buttons */}
         <View style={styles.buttonContainer}>
           <Pressable onPress={previousSlide}>
@@ -88,7 +86,7 @@ const CustomSlideshow = () => {
           <HStack style={styles.dotContainer}>
             {images.map((_, index) => (
               <Pressable key={index} onPress={() => crossfade(index)}>
-                {currentIndex === index ? (
+                {state.currentIndex === index ? (
                   <SvgIcon iconName='outlineCircle' />
                 ) : (
                   <SvgIcon iconName='filedCircle' />
@@ -115,23 +113,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     justifyContent: 'flex-end'
-  },
-  textContainer: {
-    position: 'absolute',
-    top: '33%',
-    marginHorizontal: 16
-  },
-  heading: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#FDFDFD',
-    lineHeight: 45,
-    width: '55%'
-  },
-  text: {
-    color: '#FDFDFD',
-    width: '50%',
-    marginTop: 8
   },
   button: {
     borderColor: '#FDFDFD',
