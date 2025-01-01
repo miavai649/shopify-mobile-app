@@ -11,6 +11,7 @@ import { Text } from '@/components/ui/text'
 import CustomButton from '@/components/button'
 import Blog from '@/components/Blog'
 import Blog2 from '@/components/blog2/Index'
+import Newsletter from '@/components/newsletter'
 
 const index = () => {
   // banner slideshow images
@@ -61,6 +62,8 @@ const index = () => {
 
         {/* blog 2 */}
         <Blog2 />
+        {/* newsletter section */}
+        <Newsletter />
       </ScrollView>
     </View>
   )

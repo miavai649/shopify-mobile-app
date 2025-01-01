@@ -21,7 +21,7 @@ const Blog2 = () => {
       title: 'Transform Your Wardrobe with Style'
     },
     {
-      id: 1,
+      id: 3,
       image: require('../../assets/images/blog-1.png'),
       date: '10 Dec 2024',
       title: 'Timeless Fashion Ideas Just For You'

@@ -363,6 +363,27 @@ const EyeIcon = (props: SvgComponentProps) => (
   </Svg>
 )
 
+const EmailIconContainer = (props: SvgComponentProps) => (
+  <Svg width={20} height={21} viewBox='0 0 20 21' fill='none' {...props}>
+    <G clipPath='url(#clip0_553_4152)'>
+      <Path
+        d='M19.7709 9.94699C19.7706 9.94676 19.7704 9.94648 19.7702 9.94625L15.688 5.88375C15.3821 5.57941 14.8875 5.58054 14.5831 5.8864C14.2787 6.19222 14.2799 6.68687 14.5857 6.99125L17.3265 9.71875H0.78125C0.349766 9.71875 0 10.0685 0 10.5C0 10.9315 0.349766 11.2812 0.78125 11.2812H17.3264L14.5857 14.0087C14.2799 14.3131 14.2788 14.8078 14.5831 15.1136C14.8875 15.4195 15.3822 15.4205 15.688 15.1162L19.7702 11.0537C19.7704 11.0535 19.7706 11.0532 19.7709 11.053C20.0769 10.7476 20.0759 10.2514 19.7709 9.94699Z'
+        fill='#555353'
+      />
+    </G>
+    <Defs>
+      <ClipPath id='clip0_553_4152'>
+        <Rect
+          width={20}
+          height={20}
+          fill='white'
+          transform='translate(0 0.5)'
+        />
+      </ClipPath>
+    </Defs>
+  </Svg>
+)
+
 const SvgIcon = ({ iconName }: { iconName: string }) => {
   switch (iconName) {
     case 'dropdown':
@@ -403,6 +424,8 @@ const SvgIcon = ({ iconName }: { iconName: string }) => {
       return <Cart />
     case 'eye':
       return <EyeIcon />
+    case 'emailContainer':
+      return <EmailIconContainer />
     default:
       return null
   }

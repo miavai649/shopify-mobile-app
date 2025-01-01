@@ -27,7 +27,7 @@ const CustomInput = ({
 
       <InputField className={inputFieldStyle} placeholder={placeholderText} />
       {inputSlotPosition === 'right' && (
-        <InputSlot>{inputSlotContent}</InputSlot>
+        <InputSlot className={inputSlotStyle}>{inputSlotContent}</InputSlot>
       )}
     </Input>
   )
