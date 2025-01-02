@@ -5,6 +5,8 @@ import { Text } from '../ui/text'
 import { VStack } from '../ui/vstack'
 import { HStack } from '../ui/hstack'
 import FooterColumn from './FooterColumn'
+import SvgIcon from '@/assets/Icons'
+import { Divider } from '../ui/divider'
 
 const Footer = () => {
   const columns = [
@@ -50,6 +52,29 @@ const Footer = () => {
             />
           ))}
         </HStack>
+        <View>
+          <Text className='text-xl font-semibold leading-7 text-[#FDFDFD]'>
+            Follow Us
+          </Text>
+          <HStack className='gap-3 mt-3'>
+            <SvgIcon iconName='instagram' />
+            <SvgIcon iconName='facebook' />
+            <SvgIcon iconName='socialMedia' />
+            <SvgIcon iconName='twitter' />
+          </HStack>
+        </View>
+        <Divider className='bg-[#FDFDFD] opacity-5' />
+        <View>
+          <Text className='mb-3 text-base font-normal leading-[25.6px]'>
+            Copyright @2024 Fibricly, Powered by Shopify
+          </Text>
+          <HStack className='gap-6 items-center'>
+            <SvgIcon iconName='masterCard' />
+            <SvgIcon iconName='visaCard' />
+            <SvgIcon iconName='jcbCard' />
+            <SvgIcon iconName='unionPayCard' />
+          </HStack>
+        </View>
       </VStack>
     </View>
   )
