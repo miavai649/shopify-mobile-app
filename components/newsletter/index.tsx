@@ -10,7 +10,7 @@ import { VStack } from '../ui/vstack'
 
 const Newsletter = () => {
   return (
-    <View className='mx-6'>
+    <View className='mx-6 mb-12'>
       <VStack className='gap-3'>
         <View>
           <Heading className='text-2xl font-bold leading-[38px] text-center'>
