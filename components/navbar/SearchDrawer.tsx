@@ -107,21 +107,17 @@ const SearchDrawer = ({ topOffset }: any) => {
   const [searchDrawer, setSearchDrawer] = useState(false)
 
   return (
-    <>
-      <CustomDrawer
-        openDrawerTriggerFunc={() => setSearchDrawer(true)}
-        triggerBtnContent={<SvgIcon iconName='search' />}
-        drawerContent={
-          <SearchDrawerContent setSearchDrawer={setSearchDrawer} />
-        }
-        drawerContentStyleObj={styles.drawerContent}
-        offset={topOffset}
-        drawerPosition={'right'}
-        drawerSize={'lg'}
-        closeDrawerTriggerFunc={() => setSearchDrawer(false)}
-        drawerTriggerState={searchDrawer}
-      />
-    </>
+    <CustomDrawer
+      openDrawerTriggerFunc={() => setSearchDrawer(true)}
+      triggerBtnContent={<SvgIcon iconName='search' />}
+      drawerContent={<SearchDrawerContent setSearchDrawer={setSearchDrawer} />}
+      drawerContentStyleObj={styles.drawerContent}
+      offset={topOffset}
+      drawerPosition={'right'}
+      drawerSize={'lg'}
+      closeDrawerTriggerFunc={() => setSearchDrawer(false)}
+      drawerTriggerState={searchDrawer}
+    />
   )
 }
 

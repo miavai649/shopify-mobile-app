@@ -6,12 +6,12 @@ interface CustomDrawerProps {
   openDrawerTriggerFunc: () => void
   triggerBtnContent: ReactNode
   drawerContent: ReactNode
-  drawerContentStyleObj: object
+  drawerContentStyleObj?: object
   drawerPosition: 'left' | 'right'
   drawerSize: 'sm' | 'md' | 'lg' | 'full'
   closeDrawerTriggerFunc: () => void
   drawerTriggerState: boolean
-  offset: number
+  offset?: number
 }
 
 const CustomDrawer = ({

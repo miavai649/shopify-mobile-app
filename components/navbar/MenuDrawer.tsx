@@ -46,19 +46,17 @@ const MenuDrawerContent = () => {
 const MenuDrawer = ({ combinedHeight }: any) => {
   const [menuDrawer, setMenuDrawer] = useState(false)
   return (
-    <>
-      <CustomDrawer
-        openDrawerTriggerFunc={() => setMenuDrawer(true)}
-        triggerBtnContent={<SvgIcon iconName='menu' />}
-        drawerContent={<MenuDrawerContent />}
-        drawerContentStyleObj={styles.drawerContent}
-        offset={combinedHeight}
-        drawerPosition={'left'}
-        drawerSize={'lg'}
-        closeDrawerTriggerFunc={() => setMenuDrawer(false)}
-        drawerTriggerState={menuDrawer}
-      />
-    </>
+    <CustomDrawer
+      openDrawerTriggerFunc={() => setMenuDrawer(true)}
+      triggerBtnContent={<SvgIcon iconName='menu' />}
+      drawerContent={<MenuDrawerContent />}
+      drawerContentStyleObj={styles.drawerContent}
+      offset={combinedHeight}
+      drawerPosition={'left'}
+      drawerSize={'lg'}
+      closeDrawerTriggerFunc={() => setMenuDrawer(false)}
+      drawerTriggerState={menuDrawer}
+    />
   )
 }
 
