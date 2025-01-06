@@ -20,7 +20,7 @@ import { Button, ButtonText } from '../ui/button'
 import SvgIcon from '@/assets/Icons'
 import CustomButton from '../button'
 import CustomInput from '../form/input'
-import CustomDrawer from '../drawer'
+import CustomDrawer from '../customDrawer'
 
 const products = [
   {
@@ -164,35 +164,15 @@ const CartDrawer = () => {
   const [cartDrawer, setCartDrawer] = useState(false)
 
   return (
-    <>
-      {/* <Pressable
-        onPress={() => {
-          setCartDrawer(true)
-        }}>
-        <SvgIcon iconName='cart' />
-      </Pressable>
-      <Drawer
-        isOpen={cartDrawer}
-        onClose={() => {
-          setCartDrawer(false)
-        }}
-        size='full'
-        anchor='right'>
-        <DrawerBackdrop />
-        <DrawerContent>
-          
-        </DrawerContent>
-      </Drawer> */}
-      <CustomDrawer
-        openDrawerTriggerFunc={() => setCartDrawer(true)}
-        triggerBtnContent={<SvgIcon iconName='cart' />}
-        drawerContent={<CartDrawerContent setCartDrawer={setCartDrawer} />}
-        drawerPosition={'right'}
-        drawerSize={'full'}
-        closeDrawerTriggerFunc={() => setCartDrawer(false)}
-        drawerTriggerState={cartDrawer}
-      />
-    </>
+    <CustomDrawer
+      openDrawerTriggerFunc={() => setCartDrawer(true)}
+      triggerBtnContent={<SvgIcon iconName='cart' />}
+      drawerContent={<CartDrawerContent setCartDrawer={setCartDrawer} />}
+      drawerPosition={'right'}
+      drawerSize={'full'}
+      closeDrawerTriggerFunc={() => setCartDrawer(false)}
+      drawerTriggerState={cartDrawer}
+    />
   )
 }
 

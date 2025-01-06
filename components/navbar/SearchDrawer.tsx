@@ -15,8 +15,8 @@ import { InputIcon } from '../ui/input'
 import { Heading } from '../ui/heading'
 import { SearchIcon } from 'lucide-react-native'
 import CustomInput from '../form/input'
-import CustomDrawer from '../drawer'
 import { StyleSheet } from 'react-native'
+import CustomDrawer from '../customDrawer'
 
 interface SearchDrawerContent {
   setSearchDrawer: (value: boolean) => void

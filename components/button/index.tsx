@@ -4,7 +4,7 @@ import { Text } from '../ui/text'
 
 interface BtnProps {
   btnText?: string
-  btnStyle: string
+  btnStyle?: string
   btnTextStyle?: string
   handleFunction?: () => void
   buttonIcon?: ReactNode

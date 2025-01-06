@@ -1,12 +1,12 @@
 import { View, ImageBackground } from 'react-native'
 import React from 'react'
-import { GridItem } from '../ui/grid'
 import { Text } from '../ui/text'
 import { VStack } from '../ui/vstack'
 import CustomButton from '../button'
 import SvgIcon from '@/assets/Icons'
 import { HStack } from '../ui/hstack'
 import { ImageSourcePropType } from 'react-native'
+import ProductDrawer from '../customDrawer/ProductDrawer'
 
 interface ProductCardProps {
   product: {
@@ -38,11 +38,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
               btnStyle='py-[7.78px] px-[5.56px] bg-[#F64343] '
               buttonIcon={<SvgIcon iconName='cartBtn' />}
             />
-            <CustomButton
-              isIconBtn={true}
-              btnStyle='py-[7.78px] px-[5.56px] bg-[#F64343] '
-              buttonIcon={<SvgIcon iconName='eye' />}
-            />
+
+            <ProductDrawer />
           </VStack>
         </ImageBackground>
       </View>

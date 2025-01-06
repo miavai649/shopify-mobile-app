@@ -37,9 +37,11 @@ const CartCard = ({ product, asQuickView }: CartCardProps) => {
           </Heading>
         )}
 
-        <Text className='text-base leading-[25.6px] text-[#555353]'>
-          Black / L
-        </Text>
+        {!asQuickView && (
+          <Text className='text-base leading-[25.6px] text-[#555353]'>
+            Black / L
+          </Text>
+        )}
 
         <Text className='text-[14px] leading-[21px] text-[#08B923]'>
           10 Item In Stock

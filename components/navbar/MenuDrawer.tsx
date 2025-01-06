@@ -4,7 +4,7 @@ import { Pressable, StyleSheet } from 'react-native'
 import { Drawer, DrawerBackdrop, DrawerContent } from '../ui/drawer'
 import { VStack } from '../ui/vstack'
 import { Text } from '../ui/text'
-import CustomDrawer from '../drawer'
+import CustomDrawer from '../customDrawer'
 
 const MenuDrawerContent = () => {
   return (

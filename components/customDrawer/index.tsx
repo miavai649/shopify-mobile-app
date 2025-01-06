@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import { Pressable } from 'react-native'
 import { Drawer, DrawerBackdrop, DrawerContent } from '../ui/drawer'
+import CustomButton from '../button'
 
 interface CustomDrawerProps {
   openDrawerTriggerFunc: () => void
@@ -12,6 +13,8 @@ interface CustomDrawerProps {
   closeDrawerTriggerFunc: () => void
   drawerTriggerState: boolean
   offset?: number
+  isCustomBtn?: boolean
+  triggerBtnStyle?: string
 }
 
 const CustomDrawer = ({
@@ -23,11 +26,18 @@ const CustomDrawer = ({
   drawerSize,
   closeDrawerTriggerFunc,
   drawerTriggerState,
-  offset
+  offset,
+  triggerBtnStyle
 }: CustomDrawerProps) => {
   return (
     <>
-      <Pressable onPress={openDrawerTriggerFunc}>{triggerBtnContent}</Pressable>
+      <CustomButton
+        isIconBtn={true}
+        btnStyle={triggerBtnStyle}
+        buttonIcon={triggerBtnContent}
+        handleFunction={openDrawerTriggerFunc}
+      />
+      {/* <Pressable onPress={openDrawerTriggerFunc}>{triggerBtnContent}</Pressable> */}
       <Drawer
         isOpen={drawerTriggerState}
         onClose={closeDrawerTriggerFunc}
