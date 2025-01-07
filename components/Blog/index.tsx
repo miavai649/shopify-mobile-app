@@ -2,11 +2,13 @@ import { View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
 import CustomSlideshow from '../CustomSlideshow'
 import { VStack } from '../ui/vstack'
-import { Heading } from '../ui/heading'
-import CustomButton from '../button'
 import { HStack } from '../ui/hstack'
 
-const Blog = () => {
+interface BlogProps {
+  containerStyle: string
+}
+
+const Blog = ({ containerStyle }: BlogProps) => {
   const images = [
     require('../../assets/images/slideshow-1.png'),
     require('../../assets/images/slideshow-2.png'),
@@ -14,7 +16,7 @@ const Blog = () => {
   ]
 
   return (
-    <View className='my-12'>
+    <View className={containerStyle}>
       <CustomSlideshow
         slideshowHeight={400}
         images={images}

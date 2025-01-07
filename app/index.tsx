@@ -59,13 +59,13 @@ const index = () => {
         <FeaturedProduct />
 
         {/* blog */}
-        <Blog />
+        <Blog containerStyle='my-12' />
 
         {/* blog 2 */}
-        <Blog2 />
+        <Blog2 containerStyle='px-6 mb-12' />
 
         {/* newsletter section */}
-        <Newsletter />
+        <Newsletter containerStyle='mx-6 mb-12' />
 
         {/* footer section */}
         <Footer />

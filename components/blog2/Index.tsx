@@ -6,7 +6,11 @@ import { Text } from '../ui/text'
 import { VStack } from '../ui/vstack'
 import BlogCard from '../card/BlogCard'
 
-const Blog2 = () => {
+interface BlogProps {
+  containerStyle: string
+}
+
+const Blog2 = ({ containerStyle }: BlogProps) => {
   const blogData = [
     {
       id: 1,
@@ -29,7 +33,7 @@ const Blog2 = () => {
   ]
 
   return (
-    <View className='px-6 mb-12'>
+    <View className={containerStyle}>
       <HStack className='justify-between items-center'>
         <Heading className='text-2xl font-bold leading-[38px]'>
           Inspired by Style

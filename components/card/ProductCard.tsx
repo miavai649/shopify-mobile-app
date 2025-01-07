@@ -15,9 +15,10 @@ interface ProductCardProps {
     price: string
     discount: string | null
   }
+  asSuggestedProductCard?: boolean
 }
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = ({ product, asSuggestedProductCard }: ProductCardProps) => {
   return (
     <>
       <View className='relative w-full mb-[10px]'>
@@ -33,11 +34,13 @@ const ProductCard = ({ product }: ProductCardProps) => {
             </View>
           )}
           <VStack className='absolute bottom-2 right-2 gap-2'>
-            <CustomButton
-              isIconBtn={true}
-              btnStyle='py-[7.78px] px-[5.56px] bg-[#F64343] '
-              buttonIcon={<SvgIcon iconName='cartBtn' />}
-            />
+            {!asSuggestedProductCard && (
+              <CustomButton
+                isIconBtn={true}
+                btnStyle='py-[7.78px] px-[5.56px] bg-[#F64343] '
+                buttonIcon={<SvgIcon iconName='cartBtn' />}
+              />
+            )}
 
             <ProductDrawer />
           </VStack>

@@ -1,4 +1,10 @@
-import { View, Image, ScrollView, Pressable } from 'react-native'
+import {
+  View,
+  Image,
+  ScrollView,
+  Pressable,
+  ImageBackground
+} from 'react-native'
 import React from 'react'
 import { HStack } from '@/components/ui/hstack'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -23,6 +29,11 @@ import {
 } from '@/components/ui/accordion'
 import { Divider } from '@/components/ui/divider'
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react-native'
+import ProductCard from '@/components/card/ProductCard'
+import Blog from '@/components/Blog'
+import Blog2 from '@/components/blog2/Index'
+import Newsletter from '@/components/newsletter'
+import Footer from '@/components/footer'
 
 const AnnouncementTextContent = () => {
   return (
@@ -33,6 +44,37 @@ const AnnouncementTextContent = () => {
 }
 
 const productDetails = () => {
+  const productData = [
+    {
+      id: 1,
+      name: 'Velvet Edge T-Shirt',
+      image: require('../assets/images/product-4.png'),
+      price: '20.00',
+      discount: null
+    },
+    {
+      id: 2,
+      name: 'Velvet Edge T-Shirt',
+      image: require('../assets/images/product-3.png'),
+      price: '20.00',
+      discount: null
+    },
+    {
+      id: 3,
+      name: 'Velvet Edge T-Shirt',
+      image: require('../assets/images/product-2.png'),
+      price: '20.00',
+      discount: null
+    },
+    {
+      id: 4,
+      name: 'Velvet Edge T-Shirt',
+      image: require('../assets/images/product-1.png'),
+      price: '20.00',
+      discount: '20% OFF'
+    }
+  ]
+
   return (
     <SafeAreaView>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -266,8 +308,90 @@ const productDetails = () => {
               <Divider />
             </Accordion>
             {/* accordion section end */}
+
+            <HStack className='gap-3 items-center'>
+              <Text className='text-base leading-[25.6px] font-normal text-[#555353]'>
+                Share:
+              </Text>
+              <HStack className='gap-2'>
+                <SvgIcon iconName='instagramOutline' />
+                <SvgIcon iconName='facebookOutline' />
+                <SvgIcon iconName='pinterestOutline' />
+                <SvgIcon iconName='twitterOutline' />
+              </HStack>
+            </HStack>
           </VStack>
         </View>
+        {/* offer section */}
+        <ImageBackground
+          source={require('../assets/images/offerBanner.png')}
+          className='h-[320px] mt-[50px]'
+          resizeMode='cover'>
+          <View className='border-t-[8px] border-b-[8px] border-l-[8px] border-[#FDFDFD] my-auto ml-[51px] px-8 py-[18px]'>
+            <Heading className='text-[32px] font-bold text-white leading-[44.8px]'>
+              SPECIAL SALE:
+            </Heading>
+            <Heading className='text-[80px] font-bold leading-[96px] text-[#FDFDFD]'>
+              70%
+            </Heading>
+            <Text className='text-2xl font-bold leading-[38.4px] text-[#FDFDFD] opacity-[70%]'>
+              LIMITED OFFER FOR TODAY
+            </Text>
+          </View>
+        </ImageBackground>
+
+        {/* suggested products */}
+        <View className='p-6 mt-[50px]'>
+          <Heading className='text-2xl font-bold leading-[38.4px] text-center'>
+            Style Pairings for You
+          </Heading>
+          <HStack className='gap-4 justify-center mt-1'>
+            {['All', 'Men', 'Women', 'Kids', 'Elderly'].map(
+              (category, index) => (
+                <Text
+                  key={index}
+                  className={`text-base font-normal ${
+                    index === 1 ? 'text-[#F64343]' : 'text-[#555353]'
+                  }`}>
+                  {category}
+                </Text>
+              )
+            )}
+          </HStack>
+
+          {/* products */}
+          <Grid
+            className='gap-[20px] mt-4'
+            _extra={{
+              className: 'grid-cols-2'
+            }}>
+            {productData.map((product, index) => (
+              <GridItem
+                key={index}
+                _extra={{ className: 'col-span-1' }}
+                className='w-full flex-1 '>
+                <ProductCard product={product} asSuggestedProductCard={true} />
+              </GridItem>
+            ))}
+          </Grid>
+          <CustomButton
+            btnText='See More'
+            btnStyle='border border-[#F64343] px-4 py-3 self-center mt-6'
+            btnTextStyle='text-[#F64343] text-base font-semibold leading-6 '
+          />
+        </View>
+
+        {/* blog */}
+        <Blog containerStyle='my-[50px]' />
+
+        {/* blog 2 */}
+        <Blog2 containerStyle='px-6 mb-[50px]' />
+
+        {/* newsletter section */}
+        <Newsletter containerStyle='mx-6 mb-[50px]' />
+
+        {/* footer section */}
+        <Footer />
       </ScrollView>
     </SafeAreaView>
   )

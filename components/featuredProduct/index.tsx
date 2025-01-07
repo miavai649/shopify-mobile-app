@@ -57,7 +57,7 @@ const FeaturedProduct = () => {
           <Text
             key={index}
             className={`text-base font-normal ${
-              index === 0 ? '#F64343' : '#555353'
+              index === 0 ? 'text-[#F64343]' : 'text-[#555353]'
             }`}>
             {category}
           </Text>

@@ -8,9 +8,13 @@ import { InputIcon } from '../ui/input'
 import { ArrowBigLeftDash } from 'lucide-react-native'
 import { VStack } from '../ui/vstack'
 
-const Newsletter = () => {
+interface BlogProps {
+  containerStyle: string
+}
+
+const Newsletter = ({ containerStyle }: BlogProps) => {
   return (
-    <View className='mx-6 mb-12'>
+    <View className={containerStyle}>
       <VStack className='gap-3'>
         <View>
           <Heading className='text-2xl font-bold leading-[38px] text-center'>
