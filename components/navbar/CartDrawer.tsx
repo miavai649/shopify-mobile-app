@@ -1,26 +1,18 @@
-import { View, Text, Pressable, Image } from 'react-native'
+import { Text, Pressable, Image } from 'react-native'
 import React, { useState } from 'react'
-import {
-  Drawer,
-  DrawerBackdrop,
-  DrawerBody,
-  DrawerContent,
-  DrawerHeader
-} from '@/components/ui/drawer'
+import { DrawerBody, DrawerHeader } from '@/components/ui/drawer'
 import { VStack } from '@/components/ui/vstack'
 
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { HStack } from '../ui/hstack'
 import { Heading } from '../ui/heading'
 import { Divider } from '../ui/divider'
-import { Progress, ProgressFilledTrack } from '../ui/progress'
 import CartCard from '../card/CartCard'
-import { Input, InputField, InputSlot } from '../ui/input'
-import { Button, ButtonText } from '../ui/button'
 import SvgIcon from '@/assets/Icons'
 import CustomButton from '../button'
 import CustomInput from '../form/input'
 import CustomDrawer from '../customDrawer'
+import Announcement from '../Announcement'
 
 const products = [
   {
@@ -38,6 +30,15 @@ const products = [
 ]
 interface CartDrawerContentProps {
   setCartDrawer: (value: boolean) => void
+}
+
+const AnnouncementTextContent = () => {
+  return (
+    <Text className='text-base text-[#555353]'>
+      Spend <Text className='text-[#0E0C0C]'>$1500.45 more</Text> to get free
+      shipping
+    </Text>
+  )
 }
 
 const CartDrawerContent = ({ setCartDrawer }: CartDrawerContentProps) => {
@@ -58,22 +59,7 @@ const CartDrawerContent = ({ setCartDrawer }: CartDrawerContentProps) => {
       <DrawerBody className='p-0 m-0'>
         <VStack className='mt-6 gap-6'>
           {/* announcement */}
-          <VStack className='gap-2'>
-            <HStack>
-              <SvgIcon iconName='truck' />
-              <Text className='text-base text-[#555353]'>
-                Spend <Text className='text-[#0E0C0C]'>$1500.45 more</Text> to
-                get free shipping
-              </Text>
-            </HStack>
-            <Progress
-              value={20}
-              size='sm'
-              className='rounded-none '
-              orientation='horizontal'>
-              <ProgressFilledTrack className='rounded-none bg-[#F64343]' />
-            </Progress>
-          </VStack>
+          <Announcement textContent={<AnnouncementTextContent />} />
 
           {/* added products */}
           <VStack className='gap-4'>

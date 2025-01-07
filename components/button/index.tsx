@@ -1,4 +1,4 @@
-import { Pressable } from 'react-native'
+import { Pressable, View } from 'react-native'
 import React, { ReactNode } from 'react'
 import { Text } from '../ui/text'
 
