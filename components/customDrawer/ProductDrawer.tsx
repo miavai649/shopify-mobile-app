@@ -12,6 +12,9 @@ import CartCard from '../card/CartCard'
 import { Text } from '../ui/text'
 import { View } from 'react-native'
 import CustomButton from '../button'
+import { Link, useNavigation, useRouter } from 'expo-router'
+import SizeSelect from '../select/SizeSelect'
+import ColorSelect from '../select/ColorSelect'
 
 interface ProductDrawerContentProps {
   setProductDrawer: (state: boolean) => void
@@ -27,7 +30,12 @@ const productData = {
 const ProductDrawerContent = ({
   setProductDrawer
 }: ProductDrawerContentProps) => {
-  const [size, setSize] = useState('S')
+  const router = useRouter()
+
+  const handleViewDetails = () => {
+    router.push('/productDetails')
+    setProductDrawer(false)
+  }
 
   return (
     <SafeAreaView className='flex-1'>
@@ -57,98 +65,10 @@ const ProductDrawerContent = ({
           <Divider className='mt-6 border-[0.6px] border-opacity-[30%] border-[#F64343]' />
 
           {/* product size select box */}
-          <View>
-            <Text className='text-xl font-normal leading-8'>Size</Text>
-            <HStack className='justify-between mt-2'>
-              <Pressable onPress={() => setSize('S')}>
-                <View
-                  className={`w-12 h-12 border border-[#FEECEC] ${
-                    size === 'S' && 'bg-[#F64343] '
-                  }  flex items-center justify-center`}>
-                  <Text
-                    className={`text-lg font-normal text-center  ${
-                      size === 'S' && 'text-white '
-                    }`}>
-                    S
-                  </Text>
-                </View>
-              </Pressable>
-              <Pressable onPress={() => setSize('M')}>
-                <View
-                  className={`w-12 h-12 border border-[#FEECEC] ${
-                    size === 'M' && 'bg-[#F64343] '
-                  }  flex items-center justify-center`}>
-                  <Text
-                    className={`text-lg font-normal text-center  ${
-                      size === 'M' && 'text-white '
-                    }`}>
-                    M
-                  </Text>
-                </View>
-              </Pressable>
-              <Pressable onPress={() => setSize('L')}>
-                <View
-                  className={`w-12 h-12 border border-[#FEECEC] ${
-                    size === 'L' && 'bg-[#F64343] '
-                  }  flex items-center justify-center`}>
-                  <Text
-                    className={`text-lg font-normal text-center  ${
-                      size === 'L' && 'text-white '
-                    }`}>
-                    L
-                  </Text>
-                </View>
-              </Pressable>
-              <Pressable onPress={() => setSize('XL')}>
-                <View
-                  className={`w-12 h-12 border border-[#FEECEC] ${
-                    size === 'XL' && 'bg-[#F64343] '
-                  }  flex items-center justify-center`}>
-                  <Text
-                    className={`text-lg font-normal text-center  ${
-                      size === 'XL' && 'text-white '
-                    }`}>
-                    XL
-                  </Text>
-                </View>
-              </Pressable>
-              <Pressable onPress={() => setSize('XXL')}>
-                <View
-                  className={`w-12 h-12 border border-[#FEECEC] ${
-                    size === 'XXL' && 'bg-[#F64343] '
-                  }  flex items-center justify-center`}>
-                  <Text
-                    className={`text-lg font-normal text-center  ${
-                      size === 'XXL' && 'text-white '
-                    }`}>
-                    XXL
-                  </Text>
-                </View>
-              </Pressable>
-            </HStack>
-          </View>
+          <SizeSelect headingTextColor={'text-xl font-normal leading-8'} />
+
           {/* color selection area */}
-          <View>
-            <Text className='text-xl font-normal leading-8'>Color</Text>
-            <HStack className='justify-between mt-2'>
-              <View>
-                <Image source={require('../../assets/images/color-1.png')} />
-                <Text className='text-sm font-normal leading-[21px]'>Red</Text>
-              </View>
-              <View>
-                <Image source={require('../../assets/images/color-2.png')} />
-                <Text className='text-sm font-normal leading-[21px]'>Red</Text>
-              </View>
-              <View>
-                <Image source={require('../../assets/images/color-3.png')} />
-                <Text className='text-sm font-normal leading-[21px]'>Red</Text>
-              </View>
-              <View>
-                <Image source={require('../../assets/images/color-4.png')} />
-                <Text className='text-sm font-normal leading-[21px]'>Red</Text>
-              </View>
-            </HStack>
-          </View>
+          <ColorSelect headingTextStyle='text-xl font-normal leading-8' />
         </VStack>
       </DrawerBody>
 
@@ -174,6 +94,11 @@ const ProductDrawerContent = ({
             btnStyle='flex-1 rounded-none py-[10px] px-4 bg-[#F64343]'
           />
         </HStack>
+        <Pressable onPress={handleViewDetails}>
+          <Text className='text-lg font-semibold leading-[25.2px] underline text-center mt-[27.5px]'>
+            View Details
+          </Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   )

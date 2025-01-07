@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   scrollViewContent: {
-    flexGrow: 1 // Allows the content to grow and push down
+    flexGrow: 1
   },
   textContainer: {
     position: 'absolute',

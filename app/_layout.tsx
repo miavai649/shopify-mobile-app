@@ -9,6 +9,7 @@ export default function RootLayout() {
     <GluestackUIProvider mode='light'>
       <Stack>
         <Stack.Screen name='index' options={{ headerShown: false }} />
+        <Stack.Screen name='productDetails' options={{ headerShown: false }} />
         <Stack.Screen name='+not-found' />
       </Stack>
       <StatusBar style='auto' />
