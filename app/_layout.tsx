@@ -1,18 +1,39 @@
 import '@/global.css'
-import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider'
+import React from 'react'
+import { View, StyleSheet } from 'react-native'
 import { Stack } from 'expo-router'
+import Navbar from '@/components/navbar' // Adjust import path
+import Footer from '@/components/footer' // Adjust import path
+import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider' // Adjust import path
 import { StatusBar } from 'expo-status-bar'
 import 'react-native-reanimated'
 
 export default function RootLayout() {
   return (
     <GluestackUIProvider mode='light'>
-      <Stack>
-        <Stack.Screen name='index' options={{ headerShown: false }} />
-        <Stack.Screen name='productDetails' options={{ headerShown: false }} />
-        <Stack.Screen name='+not-found' />
-      </Stack>
+      <View style={styles.container}>
+        {/* Navbar */}
+        <Navbar />
+
+        {/* Stack Navigator for Pages */}
+        <View style={styles.content}>
+          <Stack
+            screenOptions={{
+              headerShown: false // Disable default headers
+            }}
+          />
+        </View>
+      </View>
       <StatusBar style='auto' />
     </GluestackUIProvider>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  content: {
+    flex: 1
+  }
+})

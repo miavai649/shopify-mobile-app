@@ -26,7 +26,7 @@ const index = () => {
     <View style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         {/* navbar */}
-        <Navbar />
+        {/* <Navbar /> */}
 
         {/* hero section */}
         <CustomSlideshow

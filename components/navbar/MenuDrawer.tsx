@@ -5,11 +5,22 @@ import { Drawer, DrawerBackdrop, DrawerContent } from '../ui/drawer'
 import { VStack } from '../ui/vstack'
 import { Text } from '../ui/text'
 import CustomDrawer from '../customDrawer'
+import { useRouter } from 'expo-router'
 
-const MenuDrawerContent = () => {
+interface MenuDrawerContentProps {
+  setMenuDrawer: (value: boolean) => void
+}
+
+const MenuDrawerContent = ({ setMenuDrawer }: MenuDrawerContentProps) => {
+  const router = useRouter()
+
   return (
     <VStack className='gap-[15px] p-6'>
       <Pressable
+        onPress={() => {
+          setMenuDrawer(false)
+          router.push('/')
+        }}
         className='border-b-[1px] h-10'
         style={{ borderColor: 'rgba(85, 83, 83, 0.2)' }}>
         <Text className='text-lg'>Home</Text>
@@ -49,7 +60,7 @@ const MenuDrawer = ({ combinedHeight }: any) => {
     <CustomDrawer
       openDrawerTriggerFunc={() => setMenuDrawer(true)}
       triggerBtnContent={<SvgIcon iconName='menu' />}
-      drawerContent={<MenuDrawerContent />}
+      drawerContent={<MenuDrawerContent setMenuDrawer={setMenuDrawer} />}
       drawerContentStyleObj={styles.drawerContent}
       offset={combinedHeight}
       drawerPosition={'left'}
