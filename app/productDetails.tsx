@@ -3,7 +3,8 @@ import {
   Image,
   ScrollView,
   Pressable,
-  ImageBackground
+  ImageBackground,
+  StyleSheet
 } from 'react-native'
 import React from 'react'
 import { HStack } from '@/components/ui/hstack'
@@ -34,6 +35,7 @@ import Blog from '@/components/Blog'
 import Blog2 from '@/components/blog2/Index'
 import Newsletter from '@/components/newsletter'
 import Footer from '@/components/footer'
+import Navbar from '@/components/navbar'
 
 const AnnouncementTextContent = () => {
   return (
@@ -76,8 +78,11 @@ const productDetails = () => {
   ]
 
   return (
-    <SafeAreaView>
+    <View style={styles.safeArea}>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        {/* navbar */}
+        <Navbar />
+
         <View className='w-full p-6'>
           {/* product image gallery */}
           <View>
@@ -393,8 +398,14 @@ const productDetails = () => {
         {/* footer section */}
         <Footer />
       </ScrollView>
-    </SafeAreaView>
+    </View>
   )
 }
+
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1
+  }
+})
 
 export default productDetails
