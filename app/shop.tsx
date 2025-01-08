@@ -15,6 +15,10 @@ import CustomButton from '@/components/button'
 import SvgIcon from '@/assets/Icons'
 import { Grid, GridItem } from '@/components/ui/grid'
 import ProductCard from '@/components/card/ProductCard'
+import Blog from '@/components/Blog'
+import Blog2 from '@/components/blog2/Index'
+import Footer from '@/components/footer'
+import Newsletter from '@/components/newsletter'
 
 const Shop = () => {
   const productData = [
@@ -205,7 +209,18 @@ const Shop = () => {
               />
             </HStack>
           </View>
-          <View></View>
+
+          {/* Blog */}
+          <Blog containerStyle='' />
+
+          {/* blog 2 */}
+          <Blog2 containerStyle='px-6' />
+
+          {/* newsletter  */}
+          <Newsletter containerStyle='px-6' />
+
+          {/* footer */}
+          <Footer />
         </VStack>
       </ScrollView>
     </View>
