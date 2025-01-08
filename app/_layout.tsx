@@ -2,9 +2,8 @@ import '@/global.css'
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Stack } from 'expo-router'
-import Navbar from '@/components/navbar' // Adjust import path
-import Footer from '@/components/footer' // Adjust import path
-import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider' // Adjust import path
+import Navbar from '@/components/navbar'
+import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider'
 import { StatusBar } from 'expo-status-bar'
 import 'react-native-reanimated'
 
@@ -15,11 +14,10 @@ export default function RootLayout() {
         {/* Navbar */}
         <Navbar />
 
-        {/* Stack Navigator for Pages */}
         <View style={styles.content}>
           <Stack
             screenOptions={{
-              headerShown: false // Disable default headers
+              headerShown: false
             }}
           />
         </View>
