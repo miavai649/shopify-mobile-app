@@ -6,7 +6,17 @@ import { Text } from '../ui/text'
 import CollectionCard from '../card/CollectionCard'
 import { VStack } from '../ui/vstack'
 
-const PopularProducts = () => {
+interface PopularProductProps {
+  mainContainerStyle: string
+  isHeadingShow: boolean
+  popularProductCardContainer: string
+}
+
+const PopularProducts = ({
+  mainContainerStyle,
+  isHeadingShow,
+  popularProductCardContainer
+}: PopularProductProps) => {
   const collectionData = [
     {
       name: "Men's Collection",
@@ -23,12 +33,15 @@ const PopularProducts = () => {
   ]
 
   return (
-    <View style={{ marginHorizontal: 16, marginTop: 50 }}>
-      <HStack className='justify-between'>
-        <Heading className='text-2xl font-bold'>Popular Products</Heading>
-        <Text className='text-base text-[#555353]'>View All</Text>
-      </HStack>
-      <VStack className='w-full gap-6 mt-4'>
+    <View className={mainContainerStyle}>
+      {isHeadingShow && (
+        <HStack className='justify-between'>
+          <Heading className='text-2xl font-bold'>Popular Products</Heading>
+          <Text className='text-base text-[#555353]'>View All</Text>
+        </HStack>
+      )}
+
+      <VStack className={popularProductCardContainer}>
         {collectionData.map((collection) => (
           <CollectionCard key={collection.name} collectionData={collection} />
         ))}

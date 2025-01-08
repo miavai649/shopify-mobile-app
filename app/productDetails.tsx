@@ -80,9 +80,6 @@ const productDetails = () => {
   return (
     <View style={styles.safeArea}>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        {/* navbar */}
-        {/* <Navbar /> */}
-
         <View className='w-full p-6'>
           {/* product image gallery */}
           <View>
@@ -327,6 +324,7 @@ const productDetails = () => {
             </HStack>
           </VStack>
         </View>
+
         {/* offer section */}
         <ImageBackground
           source={require('../assets/images/offerBanner.png')}

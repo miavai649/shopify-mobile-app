@@ -50,7 +50,11 @@ const index = () => {
         />
 
         {/* popular products section */}
-        <PopularProducts />
+        <PopularProducts
+          mainContainerStyle={'mx-6 mt-[50px]'}
+          popularProductCardContainer={'w-full gap-6 mt-4'}
+          isHeadingShow={true}
+        />
 
         {/* offer section */}
         <OfferSection />

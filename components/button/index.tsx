@@ -9,6 +9,8 @@ interface BtnProps {
   handleFunction?: () => void
   buttonIcon?: ReactNode
   isIconBtn?: boolean
+  isDynamicBtn?: boolean
+  dynamicBtnContent?: ReactNode
 }
 
 const CustomButton = ({
@@ -17,12 +19,26 @@ const CustomButton = ({
   btnTextStyle,
   handleFunction,
   buttonIcon,
-  isIconBtn
+  isIconBtn,
+  isDynamicBtn,
+  dynamicBtnContent
 }: BtnProps) => {
   return (
-    <Pressable className={btnStyle} onPress={handleFunction}>
-      {isIconBtn ? buttonIcon : <Text className={btnTextStyle}>{btnText}</Text>}
-    </Pressable>
+    <>
+      {isDynamicBtn ? (
+        <Pressable className={btnStyle} onPress={handleFunction}>
+          {dynamicBtnContent}
+        </Pressable>
+      ) : (
+        <Pressable className={btnStyle} onPress={handleFunction}>
+          {isIconBtn ? (
+            buttonIcon
+          ) : (
+            <Text className={btnTextStyle}>{btnText}</Text>
+          )}
+        </Pressable>
+      )}
+    </>
   )
 }
 

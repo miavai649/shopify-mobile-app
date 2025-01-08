@@ -1,15 +1,220 @@
-import { View, ImageBackground } from 'react-native'
+import {
+  View,
+  ImageBackground,
+  StyleSheet,
+  ScrollView,
+  Pressable
+} from 'react-native'
 import React from 'react'
 import { Text } from '@/components/ui/text'
 import { VStack } from '@/components/ui/vstack'
 import Breadcrumbs from '@/components/ui/breadcrumbs'
+import PopularProducts from '@/components/popularProduct'
+import { HStack } from '@/components/ui/hstack'
+import CustomButton from '@/components/button'
+import SvgIcon from '@/assets/Icons'
+import { Grid, GridItem } from '@/components/ui/grid'
+import ProductCard from '@/components/card/ProductCard'
 
 const Shop = () => {
+  const productData = [
+    {
+      id: 1,
+      name: 'Velvet Edge T-Shirt',
+      image: require('../assets/images/product-4.png'),
+      price: '20.00',
+      discount: null
+    },
+    {
+      id: 2,
+      name: 'Velvet Edge T-Shirt',
+      image: require('../assets/images/product-3.png'),
+      price: '20.00',
+      discount: null
+    },
+    {
+      id: 3,
+      name: 'Velvet Edge T-Shirt',
+      image: require('../assets/images/product-2.png'),
+      price: '20.00',
+      discount: null
+    },
+    {
+      id: 4,
+      name: 'Velvet Edge T-Shirt',
+      image: require('../assets/images/product-1.png'),
+      price: '20.00',
+      discount: '20% OFF'
+    },
+    {
+      id: 5,
+      name: 'Velvet Edge T-Shirt',
+      image: require('../assets/images/product-5.png'),
+      price: '20.00',
+      discount: null
+    },
+    {
+      id: 6,
+      name: 'Velvet Edge T-Shirt',
+      image: require('../assets/images/product-6.png'),
+      price: '20.00',
+      discount: '20% OFF'
+    },
+    {
+      id: 7,
+      name: 'Velvet Edge T-Shirt',
+      image: require('../assets/images/product-7.png'),
+      price: '20.00',
+      discount: null
+    },
+    {
+      id: 8,
+      name: 'Velvet Edge T-Shirt',
+      image: require('../assets/images/product-8.png'),
+      price: '20.00',
+      discount: '20% OFF'
+    },
+    {
+      id: 9,
+      name: 'Velvet Edge T-Shirt',
+      image: require('../assets/images/product-9.png'),
+      price: '20.00',
+      discount: null
+    },
+    {
+      id: 10,
+      name: 'Velvet Edge T-Shirt',
+      image: require('../assets/images/product-10.png'),
+      price: '20.00',
+      discount: '20% OFF'
+    }
+  ]
+
   return (
-    <View>
-      <Breadcrumbs />
+    <View style={styles.safeArea}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <Breadcrumbs />
+        <VStack className='gap-[50px]'>
+          {/* popular products section */}
+          <PopularProducts
+            isHeadingShow={false}
+            mainContainerStyle={'mx-6 mt-8'}
+            popularProductCardContainer={' gap-6'}
+          />
+
+          <View className='w-full px-6'>
+            {/* filtering section */}
+            <HStack className='w-full gap-5'>
+              <CustomButton
+                btnStyle={
+                  'flex-1 border border-[#55535380] border-opacity-50 px-4 py-3'
+                }
+                isDynamicBtn={true}
+                dynamicBtnContent={
+                  <HStack className='justify-start items-center gap-3'>
+                    <SvgIcon iconName='filter' />
+                    <Text className='text-[#555353] text-base font-normal leading-[25.6px]'>
+                      Show Filter
+                    </Text>
+                  </HStack>
+                }
+              />
+
+              <CustomButton
+                btnStyle={
+                  'flex-1 border border-[#55535380] border-opacity-50 px-4 py-3'
+                }
+                isDynamicBtn={false}
+                btnText={'Sort'}
+                btnTextStyle={
+                  'text-[#555353] text-base font-normal leading-[25.6px] text-start'
+                }
+              />
+            </HStack>
+
+            {/* products */}
+            <Grid
+              className='gap-[20px] mt-6'
+              _extra={{
+                className: 'grid-cols-2'
+              }}>
+              {productData.map((product, index) => (
+                <GridItem
+                  key={index}
+                  _extra={{ className: 'col-span-1' }}
+                  className='w-full flex-1 '>
+                  <ProductCard
+                    product={product}
+                    asSuggestedProductCard={true}
+                  />
+                </GridItem>
+              ))}
+            </Grid>
+
+            {/* pagination button */}
+            <HStack className='gap-[13.6px] mx-auto pt-6'>
+              <CustomButton
+                btnStyle={
+                  ' border border-[#555353] w-[32px] h-[32px] flex justify-center items-center'
+                }
+                isIconBtn={true}
+                buttonIcon={<SvgIcon iconName='previousIcon' />}
+              />
+              <CustomButton
+                btnStyle={'w-[32px] h-[32px] bg-[#F64343] flex justify-center '}
+                isIconBtn={false}
+                btnText='1'
+                btnTextStyle={
+                  'text-[#FDFDFD] text-base font-normal leading-[25.6px] text-center'
+                }
+              />
+
+              <CustomButton
+                btnStyle={
+                  'w-[32px] h-[32px]  flex justify-center border border-[#555353]'
+                }
+                isIconBtn={false}
+                btnText='2'
+                btnTextStyle={
+                  'text-[#555353] text-base font-normal leading-[25.6px] text-center'
+                }
+              />
+              <CustomButton
+                btnStyle={
+                  ' w-[32px] h-[32px] flex justify-end pb-[7px] items-center '
+                }
+                isIconBtn={true}
+                buttonIcon={<SvgIcon iconName='threeDotsIcon' />}
+              />
+              <CustomButton
+                btnStyle={
+                  'w-[32px] h-[32px]  flex justify-center border border-[#555353]'
+                }
+                isIconBtn={false}
+                btnText='10'
+                btnTextStyle={
+                  'text-[#555353] text-base font-normal leading-[25.6px] text-center'
+                }
+              />
+              <CustomButton
+                btnStyle={
+                  ' border border-[#555353] w-[32px] h-[32px] flex justify-center items-center'
+                }
+                isIconBtn={true}
+                buttonIcon={<SvgIcon iconName='nextIcon' />}
+              />
+            </HStack>
+          </View>
+          <View></View>
+        </VStack>
+      </ScrollView>
     </View>
   )
 }
 
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1
+  }
+})
 export default Shop
