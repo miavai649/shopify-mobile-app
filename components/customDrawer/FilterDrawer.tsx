@@ -16,13 +16,31 @@ import CustomInput from '../form/input'
 import { Input, InputField, InputIcon, InputSlot } from '../ui/input'
 
 const ProductDrawerContent = () => {
-  const [selectedValues, setSelectedValues] = useState<string[]>([])
+  const [availability, setAvailability] = useState<string[]>([])
+  const [productType, setProductType] = useState<string[]>([])
+  const [size, setSize] = useState<string[]>([])
 
   const [lowerValue, setLowerValue] = useState(0)
   const [upperValue, setUpperValue] = useState(500)
 
-  const handleCheckboxChange = (value: string) => {
-    setSelectedValues((prev) =>
+  const handleAvailabilityChange = (value: string) => {
+    setAvailability((prev) =>
+      prev.includes(value)
+        ? prev.filter((item) => item !== value)
+        : [...prev, value]
+    )
+  }
+
+  const handleProductTypeChange = (value: string) => {
+    setProductType((prev) =>
+      prev.includes(value)
+        ? prev.filter((item) => item !== value)
+        : [...prev, value]
+    )
+  }
+
+  const handleSizeChange = (value: string) => {
+    setProductType((prev) =>
       prev.includes(value)
         ? prev.filter((item) => item !== value)
         : [...prev, value]
@@ -46,14 +64,14 @@ const ProductDrawerContent = () => {
               <CustomCheckbox
                 label='In Stock (33)'
                 value='in-stock'
-                selectedValues={selectedValues}
-                onChange={handleCheckboxChange}
+                selectedValues={availability}
+                onChange={handleAvailabilityChange}
               />
               <CustomCheckbox
                 label='Out Of Stock (6)'
                 value='out-of-stock'
-                selectedValues={selectedValues}
-                onChange={handleCheckboxChange}
+                selectedValues={availability}
+                onChange={handleAvailabilityChange}
               />
             </VStack>
           </View>
@@ -102,6 +120,117 @@ const ProductDrawerContent = () => {
                 />
               </HStack>
             </View>
+          </View>
+
+          {/* product type */}
+          <View>
+            <CustomHeaderSection headingText='Product Type' />
+            <VStack className='gap-3 mt-3'>
+              <CustomCheckbox
+                label='Jacket'
+                value='jacket'
+                selectedValues={productType}
+                onChange={handleProductTypeChange}
+              />
+              <CustomCheckbox
+                label='T-Shirt'
+                value='t-shirt'
+                selectedValues={productType}
+                onChange={handleProductTypeChange}
+              />
+              <CustomCheckbox
+                label='Skart'
+                value='Skart'
+                selectedValues={productType}
+                onChange={handleProductTypeChange}
+              />
+              <CustomCheckbox
+                label='Pant'
+                value='pant'
+                selectedValues={productType}
+                onChange={handleProductTypeChange}
+              />
+              <CustomCheckbox
+                label='Tops'
+                value='tops'
+                selectedValues={productType}
+                onChange={handleProductTypeChange}
+              />
+              <CustomCheckbox
+                label='Sweaters'
+                value='Sweaters'
+                selectedValues={productType}
+                onChange={handleProductTypeChange}
+              />
+            </VStack>
+          </View>
+
+          {/* color */}
+          <View>
+            <CustomHeaderSection headingText='Color' />
+            <HStack className='gap-4 flex-wrap mt-3 mx-auto w-full'>
+              {[
+                '#A00000',
+                '#502828',
+                '#502828',
+                '#00CED6',
+                '#A112B7',
+                '#F99E0B',
+                '#8E0FFE',
+                '#4935FF',
+                '#0A305B',
+                '#CE5600',
+                '#13CFA3',
+                '#5AFB7D',
+                '#D5EF0D',
+                '#D5EF0D',
+                '#089E92',
+                '#B56B17',
+                '#A9A9A9'
+              ].map((color, index) => (
+                <View
+                  key={index}
+                  className='h-8 w-8'
+                  style={{ backgroundColor: color }}></View>
+              ))}
+            </HStack>
+          </View>
+
+          {/* size */}
+          <View>
+            <CustomHeaderSection headingText='Size' />
+            <VStack className='gap-3 mt-3'>
+              <CustomCheckbox
+                label='S (3)'
+                value='s'
+                selectedValues={productType}
+                onChange={handleSizeChange}
+              />
+              <CustomCheckbox
+                label='M (32)'
+                value='m'
+                selectedValues={productType}
+                onChange={handleSizeChange}
+              />
+              <CustomCheckbox
+                label='L (23)'
+                value='l'
+                selectedValues={productType}
+                onChange={handleSizeChange}
+              />
+              <CustomCheckbox
+                label='XL (98)'
+                value='xl'
+                selectedValues={productType}
+                onChange={handleSizeChange}
+              />
+              <CustomCheckbox
+                label='XXL (32)'
+                value='xxl'
+                selectedValues={productType}
+                onChange={handleSizeChange}
+              />
+            </VStack>
           </View>
         </VStack>
       </DrawerBody>
