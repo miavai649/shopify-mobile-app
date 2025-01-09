@@ -1,10 +1,19 @@
 import React, { useState, useRef } from 'react'
 import { View, PanResponder, StyleSheet, Dimensions } from 'react-native'
 
-const DualRangeSlider = () => {
-  const [lowerValue, setLowerValue] = useState(0)
-  const [upperValue, setUpperValue] = useState(500)
+interface DualRangeSliderProps {
+  lowerValue: number
+  setLowerValue: (value: number) => void
+  upperValue: number
+  setUpperValue: (value: number) => void
+}
 
+const DualRangeSlider = ({
+  lowerValue,
+  setLowerValue,
+  upperValue,
+  setUpperValue
+}: DualRangeSliderProps) => {
   const screenWidth = Dimensions.get('window').width
   const sliderWidth = screenWidth - 110
   const minValue = 0

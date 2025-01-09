@@ -18,6 +18,9 @@ import { Input, InputField, InputIcon, InputSlot } from '../ui/input'
 const ProductDrawerContent = () => {
   const [selectedValues, setSelectedValues] = useState<string[]>([])
 
+  const [lowerValue, setLowerValue] = useState(0)
+  const [upperValue, setUpperValue] = useState(500)
+
   const handleCheckboxChange = (value: string) => {
     setSelectedValues((prev) =>
       prev.includes(value)
@@ -62,7 +65,12 @@ const ProductDrawerContent = () => {
               The Highest Price is $567.34
             </Text>
             <View className='mt-6'>
-              <DualRangeSlider />
+              <DualRangeSlider
+                lowerValue={lowerValue}
+                setLowerValue={setLowerValue}
+                upperValue={upperValue}
+                setUpperValue={setUpperValue}
+              />
               <HStack className='gap-5 w-full mt-5'>
                 <CustomInput
                   inputStyle='flex-1 h-[50px]'
@@ -76,7 +84,7 @@ const ProductDrawerContent = () => {
                     lineHeight: 25.6,
                     fontWeight: 400
                   }}
-                  inputFieldValue='500'
+                  inputFieldValue={lowerValue.toFixed().toString()}
                 />
                 <CustomInput
                   inputStyle='flex-1 h-[50px]'
@@ -90,7 +98,7 @@ const ProductDrawerContent = () => {
                     lineHeight: 25.6,
                     fontWeight: 400
                   }}
-                  inputFieldValue='500'
+                  inputFieldValue={upperValue.toFixed().toString()}
                 />
               </HStack>
             </View>
