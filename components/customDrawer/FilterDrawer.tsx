@@ -11,6 +11,7 @@ import { CheckIcon } from 'lucide-react-native'
 import CheckboxGroup from '../ui/customCheckbox/CheckboxGroup'
 import CustomCheckbox from '../ui/customCheckbox'
 import CustomHeaderSection from './CustomHeaderSection'
+import DualRangeSlider from '../ui/rangeSlider'
 
 const ProductDrawerContent = () => {
   const [selectedValues, setSelectedValues] = useState<string[]>([])
@@ -50,6 +51,17 @@ const ProductDrawerContent = () => {
                 onChange={handleCheckboxChange}
               />
             </VStack>
+          </View>
+
+          {/* Price */}
+          <View>
+            <CustomHeaderSection headingText='Price' />
+            <Text className='text-[#555353] text-base font-normal leading-[25.6px] mt-3'>
+              The Highest Price is $567.34
+            </Text>
+            <View className='flex-1 justify-center items-center p-4'>
+              <DualRangeSlider />
+            </View>
           </View>
         </VStack>
       </DrawerBody>
