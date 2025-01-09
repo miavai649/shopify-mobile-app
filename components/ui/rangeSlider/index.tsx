@@ -6,7 +6,7 @@ const DualRangeSlider = () => {
   const [upperValue, setUpperValue] = useState(500)
 
   const screenWidth = Dimensions.get('window').width
-  const sliderWidth = screenWidth - 105
+  const sliderWidth = screenWidth - 110
   const minValue = 0
   const maxValue = 500
   const minDistance = 4
@@ -46,7 +46,7 @@ const DualRangeSlider = () => {
 
   return (
     <View
-      className='relative bg-[#F64343] rounded-lg'
+      className='relative bg-[#F64343]  mx-auto'
       style={{ width: sliderWidth, height: 8 }}>
       <View
         className='absolute bg-white border-2 border-[#F64343] rounded-full'

@@ -740,6 +740,17 @@ const DownArrowIcon = (props: SvgComponentProps) => (
   </Svg>
 )
 
+const DollarIcon = (props: SvgComponentProps) => (
+  <Svg width={7} height={15} viewBox='0 0 7 15' fill='none' {...props}>
+    <Path
+      opacity={0.6}
+      d='M3.408 14.6V13.176C2.144 13.112 1.168 12.616 0.496 11.848L1.2 10.872C1.696 11.48 2.48 11.96 3.408 12.04V8.04C2.144 7.432 0.816 6.76 0.816 4.952C0.816 3.464 1.872 2.36 3.408 2.184V0.712H4.352V2.184C5.312 2.28 6.112 2.648 6.72 3.272L6.048 4.232C5.584 3.72 4.992 3.432 4.352 3.336V6.984C5.6 7.608 6.928 8.36 6.928 10.232C6.928 11.64 6.096 12.888 4.352 13.144V14.6H3.408ZM5.632 10.312C5.632 9.448 5.072 8.936 4.352 8.52V11.976C5.232 11.752 5.632 11.064 5.632 10.312ZM2.112 4.888C2.112 5.656 2.672 6.104 3.408 6.504V3.336C2.64 3.496 2.112 4.072 2.112 4.888Z'
+      fill='#555353'
+      fillOpacity={0.6}
+    />
+  </Svg>
+)
+
 const SvgIcon = ({ iconName }: { iconName: string }) => {
   switch (iconName) {
     case 'dropdown':
@@ -816,6 +827,8 @@ const SvgIcon = ({ iconName }: { iconName: string }) => {
       return <ThreeDotsIcon />
     case 'downArrowIcon':
       return <DownArrowIcon />
+    case 'dollarIcon':
+      return <DollarIcon />
     default:
       return null
   }

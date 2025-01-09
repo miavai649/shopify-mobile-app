@@ -4,11 +4,12 @@ import { Input, InputField, InputSlot } from '../ui/input'
 
 interface CustomInputProps {
   inputStyle: string
-  inputFieldStyle?: string
+  inputFieldStyle?: string | object
   inputSlotStyle?: string
-  placeholderText: string
+  placeholderText?: string
   inputSlotContent: ReactNode
   inputSlotPosition: 'left' | 'right'
+  inputFieldValue?: string
 }
 
 const CustomInput = ({
@@ -17,7 +18,8 @@ const CustomInput = ({
   placeholderText,
   inputSlotContent,
   inputSlotStyle,
-  inputSlotPosition
+  inputSlotPosition,
+  inputFieldValue
 }: CustomInputProps) => {
   return (
     <Input className={inputStyle}>
@@ -25,7 +27,13 @@ const CustomInput = ({
         <InputSlot className={inputSlotStyle}>{inputSlotContent}</InputSlot>
       )}
 
-      <InputField className={inputFieldStyle} placeholder={placeholderText} />
+      <InputField
+        style={typeof inputFieldStyle === 'object' ? inputFieldStyle : {}}
+        className={typeof inputFieldStyle === 'string' ? inputFieldStyle : ''}
+        placeholder={placeholderText}
+        value={inputFieldValue}
+        defaultValue={inputFieldValue}
+      />
       {inputSlotPosition === 'right' && (
         <InputSlot className={inputSlotStyle}>{inputSlotContent}</InputSlot>
       )}

@@ -7,11 +7,13 @@ import { HStack } from '../ui/hstack'
 import SvgIcon from '@/assets/Icons'
 import { VStack } from '../ui/vstack'
 
-import { CheckIcon } from 'lucide-react-native'
+import { CheckIcon, SearchIcon } from 'lucide-react-native'
 import CheckboxGroup from '../ui/customCheckbox/CheckboxGroup'
 import CustomCheckbox from '../ui/customCheckbox'
 import CustomHeaderSection from './CustomHeaderSection'
 import DualRangeSlider from '../ui/rangeSlider'
+import CustomInput from '../form/input'
+import { Input, InputField, InputIcon, InputSlot } from '../ui/input'
 
 const ProductDrawerContent = () => {
   const [selectedValues, setSelectedValues] = useState<string[]>([])
@@ -56,11 +58,41 @@ const ProductDrawerContent = () => {
           {/* Price */}
           <View>
             <CustomHeaderSection headingText='Price' />
-            <Text className='text-[#555353] text-base font-normal leading-[25.6px] mt-3'>
+            <Text className='text-[#5553534D] text-base font-normal leading-[25.6px] mt-3 '>
               The Highest Price is $567.34
             </Text>
-            <View className='flex-1 justify-center items-center p-4'>
+            <View className='mt-6'>
               <DualRangeSlider />
+              <HStack className='gap-5 w-full mt-5'>
+                <CustomInput
+                  inputStyle='flex-1 h-[50px]'
+                  inputSlotPosition='left'
+                  inputSlotStyle='pl-3'
+                  inputSlotContent={<SvgIcon iconName='dollarIcon' />}
+                  inputFieldStyle={{
+                    textAlign: 'right',
+                    color: '#0E0C0C',
+                    fontSize: 16,
+                    lineHeight: 25.6,
+                    fontWeight: 400
+                  }}
+                  inputFieldValue='500'
+                />
+                <CustomInput
+                  inputStyle='flex-1 h-[50px]'
+                  inputSlotPosition='left'
+                  inputSlotStyle='pl-3'
+                  inputSlotContent={<SvgIcon iconName='dollarIcon' />}
+                  inputFieldStyle={{
+                    textAlign: 'right',
+                    color: '#0E0C0C',
+                    fontSize: 16,
+                    lineHeight: 25.6,
+                    fontWeight: 400
+                  }}
+                  inputFieldValue='500'
+                />
+              </HStack>
             </View>
           </View>
         </VStack>
