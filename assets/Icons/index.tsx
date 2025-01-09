@@ -731,6 +731,15 @@ const ThreeDotsIcon = (props: SvgComponentProps) => (
   </Svg>
 )
 
+const DownArrowIcon = (props: SvgComponentProps) => (
+  <Svg width={20} height={20} viewBox='0 0 20 20' fill='none' {...props}>
+    <Path
+      d='M10 13.75C9.8402 13.75 9.6802 13.6889 9.55816 13.5669L3.30816 7.31691C3.06395 7.0727 3.06395 6.67723 3.30816 6.43316C3.55238 6.1891 3.94785 6.18895 4.19191 6.43316L10 12.2413L15.8082 6.43316C16.0524 6.18895 16.4479 6.18895 16.6919 6.43316C16.936 6.67738 16.9361 7.07285 16.6919 7.31691L10.4419 13.5669C10.3199 13.6889 10.1599 13.75 10 13.75Z'
+      fill='black'
+    />
+  </Svg>
+)
+
 const SvgIcon = ({ iconName }: { iconName: string }) => {
   switch (iconName) {
     case 'dropdown':
@@ -805,6 +814,8 @@ const SvgIcon = ({ iconName }: { iconName: string }) => {
       return <NextIcon />
     case 'threeDotsIcon':
       return <ThreeDotsIcon />
+    case 'downArrowIcon':
+      return <DownArrowIcon />
     default:
       return null
   }

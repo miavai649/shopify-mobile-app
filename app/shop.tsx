@@ -19,6 +19,7 @@ import Blog from '@/components/Blog'
 import Blog2 from '@/components/blog2/Index'
 import Footer from '@/components/footer'
 import Newsletter from '@/components/newsletter'
+import FilterDrawer from '@/components/customDrawer/FilterDrawer'
 
 const Shop = () => {
   const productData = [
@@ -109,20 +110,7 @@ const Shop = () => {
           <View className='w-full px-6'>
             {/* filtering section */}
             <HStack className='w-full gap-5'>
-              <CustomButton
-                btnStyle={
-                  'flex-1 border border-[#55535380] border-opacity-50 px-4 py-3'
-                }
-                isDynamicBtn={true}
-                dynamicBtnContent={
-                  <HStack className='justify-start items-center gap-3'>
-                    <SvgIcon iconName='filter' />
-                    <Text className='text-[#555353] text-base font-normal leading-[25.6px]'>
-                      Show Filter
-                    </Text>
-                  </HStack>
-                }
-              />
+              <FilterDrawer />
 
               <CustomButton
                 btnStyle={

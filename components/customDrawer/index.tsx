@@ -5,7 +5,7 @@ import CustomButton from '../button'
 
 interface CustomDrawerProps {
   openDrawerTriggerFunc: () => void
-  triggerBtnContent: ReactNode
+  triggerBtnContent?: ReactNode
   drawerContent: ReactNode
   drawerContentStyleObj?: object
   drawerPosition: 'left' | 'right'
@@ -15,6 +15,8 @@ interface CustomDrawerProps {
   offset?: number
   isCustomBtn?: boolean
   triggerBtnStyle?: string
+  isTriggerBtnDynamic?: boolean
+  dynamicTriggerBtnContent?: ReactNode
 }
 
 const CustomDrawer = ({
@@ -27,7 +29,9 @@ const CustomDrawer = ({
   closeDrawerTriggerFunc,
   drawerTriggerState,
   offset,
-  triggerBtnStyle
+  triggerBtnStyle,
+  isTriggerBtnDynamic,
+  dynamicTriggerBtnContent
 }: CustomDrawerProps) => {
   return (
     <>
@@ -36,6 +40,8 @@ const CustomDrawer = ({
         btnStyle={triggerBtnStyle}
         buttonIcon={triggerBtnContent}
         handleFunction={openDrawerTriggerFunc}
+        isDynamicBtn={isTriggerBtnDynamic}
+        dynamicBtnContent={dynamicTriggerBtnContent}
       />
       {/* <Pressable onPress={openDrawerTriggerFunc}>{triggerBtnContent}</Pressable> */}
       <Drawer
