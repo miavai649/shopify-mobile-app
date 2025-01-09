@@ -10,6 +10,7 @@ import { VStack } from '../ui/vstack'
 import { CheckIcon } from 'lucide-react-native'
 import CheckboxGroup from '../ui/customCheckbox/CheckboxGroup'
 import CustomCheckbox from '../ui/customCheckbox'
+import CustomHeaderSection from './CustomHeaderSection'
 
 const ProductDrawerContent = () => {
   const [selectedValues, setSelectedValues] = useState<string[]>([])
@@ -33,12 +34,7 @@ const ProductDrawerContent = () => {
 
           {/* availability */}
           <View>
-            <HStack className='w-full justify-between items-center border-b-[1px] border-[#5553531A] border-opacity-10 pb-2'>
-              <Text className='text-xl font-semibold leading-7 text-black'>
-                Availability
-              </Text>
-              <SvgIcon iconName='downArrowIcon' />
-            </HStack>
+            <CustomHeaderSection headingText='Availability' />
 
             <VStack className='gap-3 mt-3'>
               <CustomCheckbox
