@@ -98,7 +98,7 @@ const Shop = () => {
   return (
     <View style={styles.safeArea}>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <Breadcrumbs />
+        <Breadcrumbs title='Shop' routes='Home &gt; Shop' />
         <VStack className='gap-[50px]'>
           {/* popular products section */}
           <PopularProducts

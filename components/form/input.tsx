@@ -7,8 +7,8 @@ interface CustomInputProps {
   inputFieldStyle?: string | object
   inputSlotStyle?: string
   placeholderText?: string
-  inputSlotContent: ReactNode
-  inputSlotPosition: 'left' | 'right'
+  inputSlotContent?: ReactNode
+  inputSlotPosition: 'left' | 'right' | 'none'
   inputFieldValue?: string
 }
 

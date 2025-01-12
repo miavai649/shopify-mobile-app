@@ -13,6 +13,7 @@ import CustomButton from '../button'
 import CustomInput from '../form/input'
 import CustomDrawer from '../customDrawer'
 import Announcement from '../Announcement'
+import { useRouter } from 'expo-router'
 
 const products = [
   {
@@ -42,6 +43,13 @@ const AnnouncementTextContent = () => {
 }
 
 const CartDrawerContent = ({ setCartDrawer }: CartDrawerContentProps) => {
+  const router = useRouter()
+
+  const handleViewCart = () => {
+    router.push('/cart')
+    setCartDrawer(false)
+  }
+
   return (
     <SafeAreaView>
       <DrawerHeader className='p-0 m-0'>
@@ -129,6 +137,7 @@ const CartDrawerContent = ({ setCartDrawer }: CartDrawerContentProps) => {
             </Text>
             <HStack className='justify-between gap-6 mt-4'>
               <CustomButton
+                handleFunction={handleViewCart}
                 btnText='View Cart'
                 btnTextStyle='text-lg font-semibold text-center'
                 btnStyle='flex-1 rounded-none py-[10px] px-4 border border-[#0E0C0C]'

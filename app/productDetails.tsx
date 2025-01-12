@@ -103,6 +103,7 @@ const productDetails = () => {
               />
             </HStack>
           </View>
+          {/* product details */}
           <VStack className='gap-1 mt-4'>
             <Heading className='text-2xl font-semibold leading-[38.4px]'>
               Velvet Edge T-Shirt
