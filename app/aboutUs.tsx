@@ -61,7 +61,7 @@ const aboutUs = () => {
   ]
 
   return (
-    <View>
+    <View className='bg-white'>
       <ScrollView>
         <Breadcrumbs title='About Us' routes='Home > About Us' />
         {/* banner section */}
