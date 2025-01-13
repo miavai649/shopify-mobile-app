@@ -49,6 +49,10 @@ const MenuDrawerContent = ({ setMenuDrawer }: MenuDrawerContentProps) => {
         <Text className='text-lg'>Blog</Text>
       </Pressable>
       <Pressable
+        onPress={() => {
+          setMenuDrawer(false)
+          router.push('/contactUs')
+        }}
         className='border-b-[1px] h-10'
         style={{ borderColor: 'rgba(85, 83, 83, 0.2)' }}>
         <Text className='text-lg'>Contact us</Text>
