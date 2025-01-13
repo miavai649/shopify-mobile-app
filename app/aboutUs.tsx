@@ -19,6 +19,10 @@ import {
   AccordionTrigger
 } from '@/components/ui/accordion'
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react-native'
+import Blog from '@/components/Blog'
+import Blog2 from '@/components/blog2/Index'
+import Newsletter from '@/components/newsletter'
+import Footer from '@/components/footer'
 
 const aboutUs = () => {
   const faqData = [
@@ -295,6 +299,18 @@ const aboutUs = () => {
             </View>
           </View>
         </View>
+
+        {/* blog */}
+        <Blog containerStyle='my-[50px]' />
+
+        {/* blog 2 */}
+        <Blog2 containerStyle='px-6 mb-[50px]' />
+
+        {/* newsletter section */}
+        <Newsletter containerStyle='mx-6 mb-[50px]' />
+
+        {/* footer section */}
+        <Footer />
       </ScrollView>
     </View>
   )
