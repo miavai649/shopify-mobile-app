@@ -10,6 +10,8 @@ import { VStack } from '@/components/ui/vstack'
 import { Textarea, TextareaInput } from '@/components/ui/textarea'
 import CustomInput from '@/components/form/input'
 import CustomButton from '@/components/button'
+import Newsletter from '@/components/newsletter'
+import Footer from '@/components/footer'
 
 const BlogSubHeading = ({ headingText }: { headingText: string }) => {
   return (
@@ -30,6 +32,39 @@ const BlogText = ({ text }: { text: string }) => {
 const BlogDetails = () => {
   const { id } = useLocalSearchParams()
 
+  const popularProductData = [
+    {
+      id: 1,
+      image: require('../../assets/images/popular-1.png'),
+      title: 'Long Sleeve Top Black',
+      price: '$65.38'
+    },
+    {
+      id: 2,
+      image: require('../../assets/images/popular-2.png'),
+      title: 'Solid Cargo Pant',
+      price: '$73.43'
+    },
+    {
+      id: 3,
+      image: require('../../assets/images/popular-2.png'),
+      title: 'Premium Polo T-Shirt',
+      price: '$98.35'
+    },
+    {
+      id: 4,
+      image: require('../../assets/images/popular-3.png'),
+      title: 'Long Maxi Dress',
+      price: '$65.38'
+    },
+    {
+      id: 5,
+      image: require('../../assets/images/popular-4.png'),
+      title: 'Tokyo Short Ploral Dress',
+      price: '$47.78'
+    }
+  ]
+
   return (
     <View>
       <ScrollView>
@@ -37,6 +72,7 @@ const BlogDetails = () => {
           title={Array.isArray(id) ? id.join(', ') : id}
           routes={`Home > Blog > ${Array.isArray(id) ? id.join(', ') : id}`}
         />
+        {/* blog content */}
         <View className='mt-8 px-6'>
           {/* blog title */}
           <Heading className='text-2xl font-bold leading-[38.4px] text-[#0E0C0C]'>
@@ -203,12 +239,28 @@ const BlogDetails = () => {
             Popular Products
           </Heading>
 
-          <VStack>
-            <HStack>
-              <Image source={require('../../assets/images/popular-1.png')} />
-            </HStack>
+          <VStack className='mt-2 gap-4'>
+            {popularProductData.map((product) => (
+              <HStack className='gap-3' key={product.id}>
+                <Image source={product.image} />
+                <View>
+                  <Text className='text-[#0E0C0C] text-base font-normal leading-[25.6px]'>
+                    {product.title}
+                  </Text>
+                  <Text className='text-[#555353] text-sm font-normal leading-[21px]'>
+                    {product.price}
+                  </Text>
+                </View>
+              </HStack>
+            ))}
           </VStack>
         </View>
+
+        {/* newsletter section */}
+        <Newsletter containerStyle='mx-6 my-[50px]' />
+
+        {/* footer section */}
+        <Footer />
       </ScrollView>
     </View>
   )
