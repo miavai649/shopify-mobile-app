@@ -2,28 +2,15 @@ import Announcement from '@/components/Announcement'
 import CartCard from '@/components/card/CartCard'
 import Breadcrumbs from '@/components/ui/breadcrumbs'
 import { Heading } from '@/components/ui/heading'
-import {
-  Select,
-  SelectBackdrop,
-  SelectContent,
-  SelectDragIndicator,
-  SelectDragIndicatorWrapper,
-  SelectIcon,
-  SelectInput,
-  SelectItem,
-  SelectPortal,
-  SelectTrigger
-} from '@/components/ui/select'
 import { Text } from '@/components/ui/text'
 import { VStack } from '@/components/ui/vstack'
-import { Check, ChevronDownIcon } from 'lucide-react-native'
+import { Check } from 'lucide-react-native'
 import React, { useState } from 'react'
-import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native'
-import { Picker } from '@react-native-picker/picker'
+import { ScrollView, TouchableOpacity, View } from 'react-native'
 import FSelect from '@/components/form/FSelect'
 import { HStack } from '@/components/ui/hstack'
 import CustomInput from '@/components/form/input'
-import { Input, InputField } from '@/components/ui/input'
+
 import CustomButton from '@/components/button'
 import { Grid, GridItem } from '@/components/ui/grid'
 import ProductCard from '@/components/card/ProductCard'

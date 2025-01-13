@@ -40,6 +40,10 @@ const MenuDrawerContent = ({ setMenuDrawer }: MenuDrawerContentProps) => {
         <Text className='text-lg'>Shop</Text>
       </Pressable>
       <Pressable
+        onPress={() => {
+          setMenuDrawer(false)
+          router.push('/blog')
+        }}
         className='border-b-[1px] h-10'
         style={{ borderColor: 'rgba(85, 83, 83, 0.2)' }}>
         <Text className='text-lg'>Blog</Text>
@@ -50,6 +54,10 @@ const MenuDrawerContent = ({ setMenuDrawer }: MenuDrawerContentProps) => {
         <Text className='text-lg'>Contact us</Text>
       </Pressable>
       <Pressable
+        onPress={() => {
+          setMenuDrawer(false)
+          router.push('/aboutUs')
+        }}
         className='border-b-[1px] h-10'
         style={{ borderColor: 'rgba(85, 83, 83, 0.2)' }}>
         <Text className='text-lg'>About us</Text>
