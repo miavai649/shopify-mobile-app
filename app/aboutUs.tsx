@@ -111,7 +111,7 @@ const aboutUs = () => {
             }
           ].map((item, index) => (
             <View key={index}>
-              <View className='p-[14px] border border-[#FEECEC]'>
+              <View className='p-[14px] border border-[#FEECEC] self-start'>
                 <SvgIcon iconName={item.iconName} />
               </View>
               <Heading className='font-bold text-2xl leading-[38.4px] text-black'>

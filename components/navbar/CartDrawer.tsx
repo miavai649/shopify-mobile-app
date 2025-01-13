@@ -1,4 +1,4 @@
-import { Text, Pressable, Image } from 'react-native'
+import { Text, Pressable, Image, ScrollView } from 'react-native'
 import React, { useState } from 'react'
 import { DrawerBody, DrawerHeader } from '@/components/ui/drawer'
 import { VStack } from '@/components/ui/vstack'
@@ -52,105 +52,109 @@ const CartDrawerContent = ({ setCartDrawer }: CartDrawerContentProps) => {
 
   return (
     <SafeAreaView>
-      <DrawerHeader className='p-0 m-0'>
-        <HStack className='items-center justify-between w-full'>
-          <Heading className='text-2xl font-bold'>Your Cart (3)</Heading>
-          <Pressable
-            onPress={() => {
-              setCartDrawer(false)
-            }}>
-            <SvgIcon iconName='close' />
-          </Pressable>
-        </HStack>
-      </DrawerHeader>
-      <Divider className='mt-3 border-[0.6px] border-opacity-[30%] border-[#F64343]' />
-      <DrawerBody className='p-0 m-0'>
-        <VStack className='mt-6 gap-6'>
-          {/* announcement */}
-          <Announcement textContent={<AnnouncementTextContent />} />
+      <ScrollView>
+        <DrawerHeader className='p-0 m-0'>
+          <HStack className='items-center justify-between w-full'>
+            <Heading className='text-2xl font-bold'>Your Cart (3)</Heading>
+            <Pressable
+              onPress={() => {
+                setCartDrawer(false)
+              }}>
+              <SvgIcon iconName='close' />
+            </Pressable>
+          </HStack>
+        </DrawerHeader>
+        <Divider className='mt-3 border-[0.6px] border-opacity-[30%] border-[#F64343]' />
+        <DrawerBody className='p-0 m-0'>
+          <VStack className='mt-6 gap-6'>
+            {/* announcement */}
+            <Announcement textContent={<AnnouncementTextContent />} />
 
-          {/* added products */}
-          <VStack className='gap-4'>
-            {products.map((product) => (
-              <CartCard
-                key={product.id}
-                product={product}
-                asQuickView={false}
-              />
-            ))}
-          </VStack>
+            {/* added products */}
+            <VStack className='gap-4'>
+              {products.map((product) => (
+                <CartCard
+                  key={product.id}
+                  product={product}
+                  asQuickView={false}
+                />
+              ))}
+            </VStack>
 
-          {/* suggested products */}
-          <VStack className='px-6 py-4 gap-3 bg-[#F2F2F2]'>
-            {/* title and slider controller */}
-            <HStack className='w-full justify-between'>
-              <Text className='font-semibold text-base text-black'>
-                You May Also Like
-              </Text>
-              <HStack className='gap-5'>
-                <SvgIcon iconName='left' />
-                <SvgIcon iconName='right' />
+            {/* suggested products */}
+            <VStack className='px-6 py-4 gap-3 bg-[#F2F2F2]'>
+              {/* title and slider controller */}
+              <HStack className='w-full justify-between'>
+                <Text className='font-semibold text-base text-black'>
+                  You May Also Like
+                </Text>
+                <HStack className='gap-5'>
+                  <SvgIcon iconName='left' />
+                  <SvgIcon iconName='right' />
+                </HStack>
               </HStack>
-            </HStack>
-            {/* products */}
-            <HStack className='bg-[#FDFDFD] px-3 py-2 gap-6'>
-              <Image source={require('../../assets/images/white-tShirt.png')} />
-              <VStack>
-                <Text className='text-lg font-semibold text-[#555353]'>
-                  Velvet Edge T-shirt
-                </Text>
-                <Text className='text-base leading-[25px] text-[#555353]'>
-                  $45.67
-                </Text>
-                <Pressable className='py-[10px]'>
-                  <Text className='text-lg font-semibold underline'>
-                    Quick view
+              {/* products */}
+              <HStack className='bg-[#FDFDFD] px-3 py-2 gap-6'>
+                <Image
+                  source={require('../../assets/images/white-tShirt.png')}
+                />
+                <VStack>
+                  <Text className='text-lg font-semibold text-[#555353]'>
+                    Velvet Edge T-shirt
                   </Text>
-                </Pressable>
-              </VStack>
-            </HStack>
-          </VStack>
+                  <Text className='text-base leading-[25px] text-[#555353]'>
+                    $45.67
+                  </Text>
+                  <Pressable className='py-[10px]'>
+                    <Text className='text-lg font-semibold underline'>
+                      Quick view
+                    </Text>
+                  </Pressable>
+                </VStack>
+              </HStack>
+            </VStack>
 
-          {/* apply discount coupon input box */}
+            {/* apply discount coupon input box */}
 
-          <CustomInput
-            inputStyle='border-[rgba(85, 83, 83, 0.20)] h-[58px] p-0 px-4 rounded-none'
-            inputFieldStyle='p-0 text-base text-[rgba(85, 83, 83, 0.40)]'
-            placeholderText='Have any coupon code?'
-            inputSlotContent={
-              <Text className='text-base font-semibold text-[#F64343]'>
-                Apply
+            <CustomInput
+              inputStyle='border-[rgba(85, 83, 83, 0.20)] h-[58px] p-0 px-4 rounded-none'
+              inputFieldStyle='p-0 text-base text-[rgba(85, 83, 83, 0.40)]'
+              placeholderText='Have any coupon code?'
+              inputSlotContent={
+                <Text className='text-base font-semibold text-[#F64343]'>
+                  Apply
+                </Text>
+              }
+              inputSlotPosition='right'
+            />
+
+            {/* subtotal section */}
+            <VStack>
+              <Divider className='mt-3 border-[0.6px] border-opacity-[30%] border-[#F64343]' />
+              <HStack className='justify-between mt-4'>
+                <Heading className='font-semibold text-2xl'>Subtotal</Heading>
+                <Heading className='font-bold text-2xl'>$130.38</Heading>
+              </HStack>
+              <Text className='text-[#555353] text-base mt-2'>
+                Taxes and shipping calculated at checkout
               </Text>
-            }
-            inputSlotPosition='right'
-          />
-
-          {/* subtotal section */}
-          <VStack>
-            <Divider className='mt-3 border-[0.6px] border-opacity-[30%] border-[#F64343]' />
-            <HStack className='justify-between mt-4'>
-              <Heading className='font-semibold text-2xl'>Subtotal</Heading>
-              <Heading className='font-bold text-2xl'>$130.38</Heading>
-            </HStack>
-            <Text className='text-[#555353] text-base mt-2'>
-              Taxes and shipping calculated at checkout
-            </Text>
-            <HStack className='justify-between gap-6 mt-4'>
-              <CustomButton
-                handleFunction={handleViewCart}
-                btnText='View Cart'
-                btnTextStyle='text-lg font-semibold text-center'
-                btnStyle='flex-1 rounded-none py-[10px] px-4 border border-[#0E0C0C]'
-              />
-              <CustomButton
-                btnText='Checkout'
-                btnTextStyle='text-lg font-semibold text-center text-[#FDFDFD]'
-                btnStyle='flex-1 rounded-none py-[10px] px-4 bg-[#F64343]'
-              />
-            </HStack>
+              <HStack className='justify-between gap-6 mt-4'>
+                <CustomButton
+                  handleFunction={handleViewCart}
+                  btnText='View Cart'
+                  btnTextStyle='text-lg font-semibold text-center'
+                  btnStyle='flex-1 rounded-none py-[10px] px-4 border border-[#0E0C0C]'
+                />
+                <CustomButton
+                  btnText='Checkout'
+                  btnTextStyle='text-lg font-semibold text-center text-[#FDFDFD]'
+                  btnStyle='flex-1 rounded-none py-[10px] px-4 bg-[#F64343]'
+                />
+              </HStack>
+            </VStack>
           </VStack>
-        </VStack>
-      </DrawerBody>
+        </DrawerBody>
+      </ScrollView>
     </SafeAreaView>
   )
 }
