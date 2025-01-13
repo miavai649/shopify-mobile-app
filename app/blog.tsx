@@ -13,55 +13,55 @@ import Footer from '@/components/footer'
 const blog = () => {
   const blogData = [
     {
-      id: 1,
+      id: '1',
       image: require('../assets/images/blog-3.png'),
       date: '10 Dec 2024',
       title: 'Style Stories: Your Fashion Inspiration'
     },
     {
-      id: 2,
+      id: '2',
       image: require('../assets/images/blog-2.png'),
       date: '10 Dec 2024',
       title: 'Transform Your Wardrobe with Style'
     },
     {
-      id: 3,
+      id: '3',
       image: require('../assets/images/blog-1.png'),
       date: '10 Dec 2024',
       title: 'Timeless Fashion Ideas Just For You'
     },
     {
-      id: 4,
+      id: '4',
       image: require('../assets/images/blog-4.png'),
       date: '10 Dec 2024',
       title: 'Timeless Fashion Ideas Just For You'
     },
     {
-      id: 5,
+      id: '5',
       image: require('../assets/images/blog-5.png'),
       date: '10 Dec 2024',
       title: 'Timeless Fashion Ideas Just For You'
     },
     {
-      id: 6,
+      id: '6',
       image: require('../assets/images/blog-6.png'),
       date: '10 Dec 2024',
       title: 'Timeless Fashion Ideas Just For You'
     },
     {
-      id: 7,
+      id: '7',
       image: require('../assets/images/blog-7.png'),
       date: '10 Dec 2024',
       title: 'Timeless Fashion Ideas Just For You'
     },
     {
-      id: 8,
+      id: '8',
       image: require('../assets/images/blog-8.png'),
       date: '10 Dec 2024',
       title: 'Timeless Fashion Ideas Just For You'
     },
     {
-      id: 9,
+      id: '9',
       image: require('../assets/images/blog-9.png'),
       date: '10 Dec 2024',
       title: 'Timeless Fashion Ideas Just For You'
