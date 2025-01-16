@@ -5,7 +5,7 @@ import {
   ScrollView,
   Pressable
 } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Text } from '@/components/ui/text'
 import { VStack } from '@/components/ui/vstack'
 import Breadcrumbs from '@/components/ui/breadcrumbs'
@@ -20,6 +20,7 @@ import Blog2 from '@/components/blog2/Index'
 import Footer from '@/components/footer'
 import Newsletter from '@/components/newsletter'
 import FilterDrawer from '@/components/customDrawer/FilterDrawer'
+import ProductDrawer from '@/components/customDrawer/ProductDrawer'
 
 const Shop = () => {
   const productData = [
@@ -95,6 +96,22 @@ const Shop = () => {
     }
   ]
 
+  const [isLoading, setIsLoading] = useState(false)
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    setIsLoading(true)
+    fetch(
+      'https://spin-routers-saddam-speaker.trycloudflare.com/miavai649.myshopify.com'
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data)
+        setIsLoading(false)
+      })
+      .catch((error) => console.error('Error fetching products:', error))
+  }, [])
+
   return (
     <View style={styles.safeArea}>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -130,17 +147,17 @@ const Shop = () => {
               _extra={{
                 className: 'grid-cols-2'
               }}>
-              {productData.map((product, index) => (
-                <GridItem
-                  key={index}
-                  _extra={{ className: 'col-span-1' }}
-                  className='w-full flex-1 '>
-                  <ProductCard
-                    product={product}
-                    asSuggestedProductCard={true}
-                  />
-                </GridItem>
-              ))}
+              {products?.map((product, index) => {
+                console.log(product)
+                return (
+                  <GridItem
+                    key={index}
+                    _extra={{ className: 'col-span-1' }}
+                    className='w-full flex-1 '>
+                    <ProductCard product={product} isLoading={isLoading} />
+                  </GridItem>
+                )
+              })}
             </Grid>
 
             {/* pagination button */}

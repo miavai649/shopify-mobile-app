@@ -10,37 +10,39 @@ import ProductDrawer from '../customDrawer/ProductDrawer'
 
 interface ProductCardProps {
   product: {
-    name: string
-    image: ImageSourcePropType
-    price: string
-    discount: string | null
+    images: { originalSrc: string }[]
+    discount: string
+    title: string
+    totalInventory: string
   }
   asSuggestedProductCard?: boolean
+  isLoading?: boolean
 }
 
-const ProductCard = ({ product, asSuggestedProductCard }: ProductCardProps) => {
+const ProductCard = ({
+  product,
+  asSuggestedProductCard,
+  isLoading
+}: ProductCardProps) => {
+  if (isLoading) {
+    return <Text>Loading...</Text>
+  }
   return (
-    <>
+    <View>
       <View className='relative w-full mb-[10px]'>
         <ImageBackground
-          source={product.image}
+          source={{ uri: product?.images[0]?.originalSrc }}
           resizeMode='cover'
           style={{ width: '100%', height: 250, flex: 1 }}>
-          {product.discount && (
-            <View className='absolute top-2 left-2 bg-[#F64343] px-[2.56px] py-[1.71px] '>
-              <Text className='text-white text-xs font-bold'>
-                {product.discount}
-              </Text>
-            </View>
-          )}
+          <View className='absolute top-2 left-2 bg-[#F64343] px-[2.56px] py-[1.71px] '>
+            <Text className='text-white text-xs font-bold'>20%</Text>
+          </View>
           <VStack className='absolute bottom-2 right-2 gap-2'>
-            {!asSuggestedProductCard && (
-              <CustomButton
-                isIconBtn={true}
-                btnStyle='py-[7.78px] px-[5.56px] bg-[#F64343] '
-                buttonIcon={<SvgIcon iconName='cartBtn' />}
-              />
-            )}
+            <CustomButton
+              isIconBtn={true}
+              btnStyle='py-[7.78px] px-[5.56px] bg-[#F64343] '
+              buttonIcon={<SvgIcon iconName='cartBtn' />}
+            />
 
             <ProductDrawer />
           </VStack>
@@ -57,11 +59,11 @@ const ProductCard = ({ product, asSuggestedProductCard }: ProductCardProps) => {
           <Text>(2)</Text>
         </HStack>
       </HStack>
-      <Text className='text-sm font-semibold'>{product.name}</Text>
+      <Text className='text-sm font-semibold'>{product?.title || ''}</Text>
       <Text className='text-xs leading-[18px] font-normal'>
-        ${product.price}
+        ${product?.totalInventory || ''}
       </Text>
-    </>
+    </View>
   )
 }
 
