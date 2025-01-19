@@ -48,7 +48,29 @@ const AnnouncementTextContent = () => {
 
 const productDetails = () => {
   const { id } = useLocalSearchParams()
-  console.log('🚀 ~ productDetails ~ id:', id)
+
+  const [singleProductLoading, setSingleProductLoading] = useState(false)
+
+  const [singleProduct, setSingleProduct] = useState<any>(null)
+  console.log('🚀 ~ productDetails ~ singleProduct:', singleProduct)
+
+  useEffect(() => {
+    if (!id) return
+    setSingleProductLoading(true)
+
+    fetch(
+      `https://period-likely-filing-restaurant.trycloudflare.com/singleProduct?shop=miavai649.myshopify.com&id=gid://shopify/Product/${id}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setSingleProduct(data)
+        setSingleProductLoading(false)
+      })
+      .catch((error) => {
+        console.error('Error fetching single product:', error)
+        setSingleProductLoading(false)
+      })
+  }, [id])
 
   const [isLoading, setIsLoading] = useState(false)
   const [products, setProducts] = useState([])
@@ -66,42 +88,34 @@ const productDetails = () => {
       .catch((error) => console.error('Error fetching products:', error))
   }, [])
 
+  if (singleProductLoading) {
+    return <Text>Loading...</Text>
+  }
+
   return (
     <View style={styles.safeArea}>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View className='w-full p-6'>
           {/* product image gallery */}
           <View>
-            <Image
-              className='w-full'
-              resizeMode='contain'
-              source={require('../../assets/images/gallery-4.png')}
-            />
-            <HStack className='justify-between w-full'>
+            {singleProduct && (
               <Image
+                source={{ uri: singleProduct.images[0]?.originalSrc }}
                 resizeMode='cover'
-                source={require('../../assets/images/gallery-1.png')}
+                className='w-full h-[500px] '
               />
-              <Image
-                resizeMode='cover'
-                source={require('../../assets/images/gallery-2.png')}
-              />
-              <Image
-                resizeMode='cover'
-                source={require('../../assets/images/galler-3.png')}
-              />
-            </HStack>
+            )}
           </View>
           {/* product details */}
           <VStack className='gap-1 mt-4'>
             <Heading className='text-2xl font-semibold leading-[38.4px]'>
-              Velvet Edge T-Shirt
+              {singleProduct?.title}
             </Heading>
             <Text className='text-lg font-semibold leading-[25.2px]'>
-              $65.38
+              ${singleProduct?.variants[0]?.price}
             </Text>
             <Text className='text-[#08B923] text-sm font-normal leading-[21px] '>
-              10 Item IN Stock
+              {singleProduct?.totalInventory} Item IN Stock
             </Text>
           </VStack>
 
