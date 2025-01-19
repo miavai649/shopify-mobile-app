@@ -10,20 +10,16 @@ import ProductDrawer from '../customDrawer/ProductDrawer'
 
 interface ProductCardProps {
   product: {
+    id: string
     images: { originalSrc: string }[]
     discount: string
     title: string
     totalInventory: string
   }
-  asSuggestedProductCard?: boolean
   isLoading?: boolean
 }
 
-const ProductCard = ({
-  product,
-  asSuggestedProductCard,
-  isLoading
-}: ProductCardProps) => {
+const ProductCard = ({ product, isLoading }: ProductCardProps) => {
   if (isLoading) {
     return <Text>Loading...</Text>
   }
@@ -44,7 +40,7 @@ const ProductCard = ({
               buttonIcon={<SvgIcon iconName='cartBtn' />}
             />
 
-            <ProductDrawer />
+            <ProductDrawer productId={product.id} />
           </VStack>
         </ImageBackground>
       </View>

@@ -6,7 +6,7 @@ import {
   ImageBackground,
   StyleSheet
 } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { HStack } from '@/components/ui/hstack'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Heading } from '@/components/ui/heading'
@@ -76,6 +76,22 @@ const productDetails = () => {
       discount: '20% OFF'
     }
   ]
+
+  const [isLoading, setIsLoading] = useState(false)
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    setIsLoading(true)
+    fetch(
+      'https://period-likely-filing-restaurant.trycloudflare.com/miavai649.myshopify.com'
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data)
+        setIsLoading(false)
+      })
+      .catch((error) => console.error('Error fetching products:', error))
+  }, [])
 
   return (
     <View style={styles.safeArea}>
@@ -369,12 +385,12 @@ const productDetails = () => {
             _extra={{
               className: 'grid-cols-2'
             }}>
-            {productData.map((product, index) => (
+            {products.map((product, index) => (
               <GridItem
                 key={index}
                 _extra={{ className: 'col-span-1' }}
                 className='w-full flex-1 '>
-                <ProductCard product={product} asSuggestedProductCard={true} />
+                <ProductCard product={product} isLoading={isLoading} />
               </GridItem>
             ))}
           </Grid>

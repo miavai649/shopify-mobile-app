@@ -1,5 +1,5 @@
 import { Image, Pressable } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CustomDrawer from '.'
 import { DrawerBody, DrawerHeader } from '../ui/drawer'
 import { HStack } from '../ui/hstack'
@@ -18,6 +18,7 @@ import ColorSelect from '../select/ColorSelect'
 
 interface ProductDrawerContentProps {
   setProductDrawer: (state: boolean) => void
+  product: any
 }
 
 const productData = {
@@ -28,7 +29,8 @@ const productData = {
 }
 
 const ProductDrawerContent = ({
-  setProductDrawer
+  setProductDrawer,
+  product
 }: ProductDrawerContentProps) => {
   const router = useRouter()
 
@@ -59,7 +61,7 @@ const ProductDrawerContent = ({
       <DrawerBody className='flex-1 p-0 m-0 mt-6'>
         <VStack className='gap-6'>
           {/* Selected Product */}
-          <CartCard product={productData} asQuickView={true} />
+          <CartCard product={product} asQuickView={true} />
 
           {/* Divider */}
           <Divider className='mt-6 border-[0.6px] border-opacity-[30%] border-[#F64343]' />
@@ -104,15 +106,35 @@ const ProductDrawerContent = ({
   )
 }
 
-const ProductDrawer = () => {
+const ProductDrawer = ({ productId }: { productId: string }) => {
   const [productDrawer, setProductDrawer] = useState(false)
+
+  const [isLoading, setIsLoading] = useState(false)
+
+  const [product, setProduct] = useState([])
+
+  useEffect(() => {
+    setIsLoading(true)
+    fetch(
+      `https://period-likely-filing-restaurant.trycloudflare.com/singleProduct?shop=miavai649.myshopify.com&id=${productId}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setProduct(data)
+        setIsLoading(false)
+      })
+      .catch((error) => console.error('Error fetching products:', error))
+  }, [productId])
 
   return (
     <CustomDrawer
       openDrawerTriggerFunc={() => setProductDrawer(true)}
       triggerBtnContent={<SvgIcon iconName='eye' />}
       drawerContent={
-        <ProductDrawerContent setProductDrawer={setProductDrawer} />
+        <ProductDrawerContent
+          setProductDrawer={setProductDrawer}
+          product={product}
+        />
       }
       drawerPosition={'right'}
       drawerSize={'full'}

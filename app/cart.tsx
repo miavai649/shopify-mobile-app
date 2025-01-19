@@ -5,7 +5,7 @@ import { Heading } from '@/components/ui/heading'
 import { Text } from '@/components/ui/text'
 import { VStack } from '@/components/ui/vstack'
 import { Check } from 'lucide-react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ScrollView, TouchableOpacity, View } from 'react-native'
 import FSelect from '@/components/form/FSelect'
 import { HStack } from '@/components/ui/hstack'
@@ -19,7 +19,7 @@ import Blog2 from '@/components/blog2/Index'
 import Newsletter from '@/components/newsletter'
 import Footer from '@/components/footer'
 
-const products = [
+const productData = [
   {
     id: 1,
     name: 'Velvet Edge T-Shirt',
@@ -31,37 +31,6 @@ const products = [
     name: 'Jacket',
     price: '65.38',
     image: require('../assets/images/white-frok.png')
-  }
-]
-
-const productData = [
-  {
-    id: 1,
-    name: 'Velvet Edge T-Shirt',
-    image: require('../assets/images/product-4.png'),
-    price: '20.00',
-    discount: null
-  },
-  {
-    id: 2,
-    name: 'Velvet Edge T-Shirt',
-    image: require('../assets/images/product-3.png'),
-    price: '20.00',
-    discount: null
-  },
-  {
-    id: 3,
-    name: 'Velvet Edge T-Shirt',
-    image: require('../assets/images/product-2.png'),
-    price: '20.00',
-    discount: null
-  },
-  {
-    id: 4,
-    name: 'Velvet Edge T-Shirt',
-    image: require('../assets/images/product-1.png'),
-    price: '20.00',
-    discount: '20% OFF'
   }
 ]
 
@@ -101,6 +70,24 @@ const cart = () => {
     }
   ]
 
+  const [isLoading, setIsLoading] = useState(false)
+
+  const [products, setProducts] = useState([])
+  console.log('🚀 ~ cart ~ products:', products)
+
+  useEffect(() => {
+    setIsLoading(true)
+    fetch(
+      'https://period-likely-filing-restaurant.trycloudflare.com/miavai649.myshopify.com'
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data)
+        setIsLoading(false)
+      })
+      .catch((error) => console.error('Error fetching products:', error))
+  }, [])
+
   return (
     <View className='bg-white'>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -108,7 +95,7 @@ const cart = () => {
 
         {/* added products */}
         <VStack className='gap-4 px-6 mt-8'>
-          {products.map((product) => (
+          {productData.map((product) => (
             <CartCard key={product.id} product={product} asQuickView={false} />
           ))}
         </VStack>
@@ -233,12 +220,12 @@ const cart = () => {
             _extra={{
               className: 'grid-cols-2'
             }}>
-            {productData.map((product, index) => (
+            {products.map((product, index) => (
               <GridItem
                 key={index}
                 _extra={{ className: 'col-span-1' }}
                 className='w-full flex-1 '>
-                <ProductCard product={product} asSuggestedProductCard={true} />
+                <ProductCard product={product} isLoading={isLoading} />
               </GridItem>
             ))}
           </Grid>

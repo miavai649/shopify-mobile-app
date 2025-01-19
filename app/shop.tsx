@@ -102,7 +102,7 @@ const Shop = () => {
   useEffect(() => {
     setIsLoading(true)
     fetch(
-      'https://spin-routers-saddam-speaker.trycloudflare.com/miavai649.myshopify.com'
+      'https://period-likely-filing-restaurant.trycloudflare.com/miavai649.myshopify.com'
     )
       .then((res) => res.json())
       .then((data) => {
