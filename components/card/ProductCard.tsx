@@ -1,18 +1,15 @@
-import { View, ImageBackground } from 'react-native'
+import { View, Image } from 'react-native'
 import React from 'react'
 import { Text } from '../ui/text'
-import { VStack } from '../ui/vstack'
 import CustomButton from '../button'
-import SvgIcon from '@/assets/Icons'
 import { HStack } from '../ui/hstack'
-import { ImageSourcePropType } from 'react-native'
-import ProductDrawer from '../customDrawer/ProductDrawer'
+import SvgIcon from '@/assets/Icons'
+import { Link, useRouter } from 'expo-router'
 
 interface ProductCardProps {
   product: {
     id: string
     images: { originalSrc: string }[]
-    discount: string
     title: string
     totalInventory: string
   }
@@ -21,44 +18,65 @@ interface ProductCardProps {
 
 const ProductCard = ({ product, isLoading }: ProductCardProps) => {
   if (isLoading) {
-    return <Text>Loading...</Text>
-  }
-  return (
-    <View>
-      <View className='relative w-full mb-[10px]'>
-        <ImageBackground
-          source={{ uri: product?.images[0]?.originalSrc }}
-          resizeMode='cover'
-          style={{ width: '100%', height: 250, flex: 1 }}>
-          <View className='absolute top-2 left-2 bg-[#F64343] px-[2.56px] py-[1.71px] '>
-            <Text className='text-white text-xs font-bold'>20%</Text>
-          </View>
-          <VStack className='absolute bottom-2 right-2 gap-2'>
-            <CustomButton
-              isIconBtn={true}
-              btnStyle='py-[7.78px] px-[5.56px] bg-[#F64343] '
-              buttonIcon={<SvgIcon iconName='cartBtn' />}
-            />
-
-            <ProductDrawer productId={product.id} />
-          </VStack>
-        </ImageBackground>
+    return (
+      <View className='w-full max-w-[300px] p-4 border border-gray-300 bg-white rounded-md shadow-sm'>
+        <Text className='text-center text-gray-500'>Loading...</Text>
       </View>
-      <HStack className='justify-between items-center'>
-        <Text className='text-[10px] font-normal leading-[13px] text-[#08B923]'>
-          In Stock
+    )
+  }
+
+  const router = useRouter()
+
+  const handleDetails = (productId: string) => {
+    router.push(`/productDetails/${productId}`)
+  }
+
+  return (
+    <View className='w-full max-w-[300px] p-4 border border-gray-300 bg-white rounded-md shadow-sm relative'>
+      <Image
+        source={{ uri: product.images[0]?.originalSrc }}
+        resizeMode='cover'
+        className='w-full h-[200px] rounded-md mb-4 relative'
+      />
+
+      <CustomButton
+        isIconBtn={true}
+        btnStyle='py-[7.78px] px-[5.56px] bg-[#F64343] absolute top-2 left-2'
+        buttonIcon={<SvgIcon iconName='eye' />}
+        handleFunction={() => {
+          const productId = product?.id.split('/').pop()
+          if (productId) {
+            handleDetails(productId)
+          }
+        }}
+      />
+
+      <View className='mb-4'>
+        <Text
+          className='text-base font-semibold text-gray-800 mb-1'
+          numberOfLines={2}>
+          {product.title}
         </Text>
-        <HStack className='justify-between items-center gap-1'>
-          {[1, 2, 3, 4, 5].map((i) => (
-            <SvgIcon key={i} iconName='star' />
-          ))}
-          <Text>(2)</Text>
-        </HStack>
+        <Text
+          className={`text-sm font-medium ${
+            product.totalInventory ? 'text-green-600' : 'text-red-600'
+          }`}>
+          {product.totalInventory ? 'In Stock' : 'Out of Stock'}
+        </Text>
+      </View>
+
+      <HStack className='justify-between gap-2'>
+        <CustomButton
+          btnText='Add to Cart'
+          btnTextStyle='text-center text-sm font-semibold text-black'
+          btnStyle='flex-1 bg-white border border-gray-700 rounded-md py-2'
+        />
+        <CustomButton
+          btnText='Buy Now'
+          btnTextStyle='text-center text-base font-semibold text-white'
+          btnStyle='flex-1 bg-red-500 rounded-md py-2'
+        />
       </HStack>
-      <Text className='text-sm font-semibold'>{product?.title || ''}</Text>
-      <Text className='text-xs leading-[18px] font-normal'>
-        ${product?.totalInventory || ''}
-      </Text>
     </View>
   )
 }

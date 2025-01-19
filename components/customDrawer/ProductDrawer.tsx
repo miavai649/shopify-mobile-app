@@ -34,10 +34,10 @@ const ProductDrawerContent = ({
 }: ProductDrawerContentProps) => {
   const router = useRouter()
 
-  const handleViewDetails = () => {
-    router.push('/productDetails')
-    setProductDrawer(false)
-  }
+  // const handleViewDetails = () => {
+  //   router.push('/productDetails')
+  //   setProductDrawer(false)
+  // }
 
   return (
     <SafeAreaView className='flex-1'>
@@ -96,7 +96,7 @@ const ProductDrawerContent = ({
             btnStyle='flex-1 rounded-none py-[10px] px-4 bg-[#F64343]'
           />
         </HStack>
-        <Pressable onPress={handleViewDetails}>
+        <Pressable>
           <Text className='text-lg font-semibold leading-[25.2px] underline text-center mt-[27.5px]'>
             View Details
           </Text>

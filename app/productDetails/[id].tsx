@@ -36,6 +36,7 @@ import Blog2 from '@/components/blog2/Index'
 import Newsletter from '@/components/newsletter'
 import Footer from '@/components/footer'
 import Navbar from '@/components/navbar'
+import { useLocalSearchParams } from 'expo-router'
 
 const AnnouncementTextContent = () => {
   return (
@@ -46,36 +47,8 @@ const AnnouncementTextContent = () => {
 }
 
 const productDetails = () => {
-  const productData = [
-    {
-      id: 1,
-      name: 'Velvet Edge T-Shirt',
-      image: require('../assets/images/product-4.png'),
-      price: '20.00',
-      discount: null
-    },
-    {
-      id: 2,
-      name: 'Velvet Edge T-Shirt',
-      image: require('../assets/images/product-3.png'),
-      price: '20.00',
-      discount: null
-    },
-    {
-      id: 3,
-      name: 'Velvet Edge T-Shirt',
-      image: require('../assets/images/product-2.png'),
-      price: '20.00',
-      discount: null
-    },
-    {
-      id: 4,
-      name: 'Velvet Edge T-Shirt',
-      image: require('../assets/images/product-1.png'),
-      price: '20.00',
-      discount: '20% OFF'
-    }
-  ]
+  const { id } = useLocalSearchParams()
+  console.log('🚀 ~ productDetails ~ id:', id)
 
   const [isLoading, setIsLoading] = useState(false)
   const [products, setProducts] = useState([])
@@ -102,20 +75,20 @@ const productDetails = () => {
             <Image
               className='w-full'
               resizeMode='contain'
-              source={require('../assets/images/gallery-4.png')}
+              source={require('../../assets/images/gallery-4.png')}
             />
             <HStack className='justify-between w-full'>
               <Image
                 resizeMode='cover'
-                source={require('../assets/images/gallery-1.png')}
+                source={require('../../assets/images/gallery-1.png')}
               />
               <Image
                 resizeMode='cover'
-                source={require('../assets/images/gallery-2.png')}
+                source={require('../../assets/images/gallery-2.png')}
               />
               <Image
                 resizeMode='cover'
-                source={require('../assets/images/galler-3.png')}
+                source={require('../../assets/images/galler-3.png')}
               />
             </HStack>
           </View>
@@ -344,7 +317,7 @@ const productDetails = () => {
 
         {/* offer section */}
         <ImageBackground
-          source={require('../assets/images/offerBanner.png')}
+          source={require('../../assets/images/offerBanner.png')}
           className='h-[320px] mt-[50px]'
           resizeMode='cover'>
           <View className='border-t-[8px] border-b-[8px] border-l-[8px] border-[#FDFDFD] my-auto ml-[51px] px-8 py-[18px]'>
