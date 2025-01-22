@@ -23,7 +23,7 @@ const FeaturedProduct = () => {
   useEffect(() => {
     setIsLoading(true)
     fetch(
-      'https://period-likely-filing-restaurant.trycloudflare.com/miavai649.myshopify.com'
+      'https://soonest-newest-vb-enters.trycloudflare.com/miavai649.myshopify.com'
     )
       .then((res) => res.json())
       .then((data) => {

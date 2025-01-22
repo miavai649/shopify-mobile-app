@@ -116,7 +116,7 @@ const ProductDrawer = ({ productId }: { productId: string }) => {
   useEffect(() => {
     setIsLoading(true)
     fetch(
-      `https://period-likely-filing-restaurant.trycloudflare.com/singleProduct?shop=miavai649.myshopify.com&id=${productId}`
+      `https://soonest-newest-vb-enters.trycloudflare.com/singleProduct?shop=miavai649.myshopify.com&id=${productId}`
     )
       .then((res) => res.json())
       .then((data) => {
