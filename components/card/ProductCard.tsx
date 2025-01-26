@@ -1,4 +1,4 @@
-import { View, Image } from 'react-native'
+import { View, Image, Linking } from 'react-native'
 import React from 'react'
 import { Text } from '../ui/text'
 import CustomButton from '../button'
@@ -38,6 +38,33 @@ const ProductCard = ({ product, isLoading }: ProductCardProps) => {
 
   const handleAddToCart = (product: any) => {
     dispatch({ type: 'ADD_TO_CART', item: product })
+  }
+
+  const handleBuyNow = (product: any) => {
+    console.log('triggered buy now button')
+    fetch('https://force-experiencing-hospital-film.trycloudflare.com/test', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        lines: [
+          {
+            quantity: 1,
+            merchandiseId: product?.id
+          }
+        ]
+      })
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.data?.cartCreate?.cart?.checkoutUrl) {
+          Linking.openURL(data?.data?.cartCreate?.cart?.checkoutUrl).catch(
+            (err) => console.error("Couldn't open URL", err)
+          )
+        }
+      })
+      .catch((error) => console.error(error))
   }
 
   return (
@@ -86,6 +113,7 @@ const ProductCard = ({ product, isLoading }: ProductCardProps) => {
           />
           <CustomButton
             btnText='Buy Now'
+            handleFunction={() => handleBuyNow(product?.variants[0])}
             btnTextStyle='text-center text-base font-semibold text-white'
             btnStyle='flex-1 bg-red-500 rounded-md py-2'
           />

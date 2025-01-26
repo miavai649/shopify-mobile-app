@@ -78,7 +78,7 @@ const cart = () => {
   useEffect(() => {
     setIsLoading(true)
     fetch(
-      'https://almost-usr-blake-style.trycloudflare.com/miavai649.myshopify.com'
+      'https://force-experiencing-hospital-film.trycloudflare.com/miavai649.myshopify.com'
     )
       .then((res) => res.json())
       .then((data) => {
