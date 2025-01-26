@@ -59,7 +59,7 @@ const productDetails = () => {
     setSingleProductLoading(true)
 
     fetch(
-      `https://sir-portraits-chancellor-lauren.trycloudflare.com/singleProduct?shop=miavai649.myshopify.com&id=gid://shopify/Product/${id}`
+      `https://almost-usr-blake-style.trycloudflare.com/singleProduct?shop=miavai649.myshopify.com&id=gid://shopify/Product/${id}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -78,7 +78,7 @@ const productDetails = () => {
   useEffect(() => {
     setIsLoading(true)
     fetch(
-      'https://sir-portraits-chancellor-lauren.trycloudflare.com/miavai649.myshopify.com'
+      'https://almost-usr-blake-style.trycloudflare.com/miavai649.myshopify.com'
     )
       .then((res) => res.json())
       .then((data) => {

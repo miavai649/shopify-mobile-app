@@ -14,6 +14,7 @@ import CustomInput from '../form/input'
 import CustomDrawer from '../customDrawer'
 import Announcement from '../Announcement'
 import { useRouter } from 'expo-router'
+import { useCart } from '@/hooks/reducer/CartProvider'
 
 const products = [
   {
@@ -161,6 +162,9 @@ const CartDrawerContent = ({ setCartDrawer }: CartDrawerContentProps) => {
 
 const CartDrawer = () => {
   const [cartDrawer, setCartDrawer] = useState(false)
+
+  const { cart, dispatch } = useCart()
+  console.log('🚀 ~ CartDrawer ~ cart:', cart)
 
   return (
     <CustomDrawer

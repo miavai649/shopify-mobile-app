@@ -116,7 +116,7 @@ const ProductDrawer = ({ productId }: { productId: string }) => {
   useEffect(() => {
     setIsLoading(true)
     fetch(
-      `https://sir-portraits-chancellor-lauren.trycloudflare.com/singleProduct?shop=miavai649.myshopify.com&id=${productId}`
+      `https://almost-usr-blake-style.trycloudflare.com/singleProduct?shop=miavai649.myshopify.com&id=${productId}`
     )
       .then((res) => res.json())
       .then((data) => {

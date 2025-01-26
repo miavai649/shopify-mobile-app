@@ -78,7 +78,7 @@ const cart = () => {
   useEffect(() => {
     setIsLoading(true)
     fetch(
-      'https://sir-portraits-chancellor-lauren.trycloudflare.com/miavai649.myshopify.com'
+      'https://almost-usr-blake-style.trycloudflare.com/miavai649.myshopify.com'
     )
       .then((res) => res.json())
       .then((data) => {

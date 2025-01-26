@@ -6,23 +6,26 @@ import Navbar from '@/components/navbar'
 import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider'
 import { StatusBar } from 'expo-status-bar'
 import 'react-native-reanimated'
+import { CartProvider } from '@/hooks/reducer/CartProvider'
 
 export default function RootLayout() {
   return (
     <GluestackUIProvider mode='light'>
-      <View style={styles.container}>
-        {/* Navbar */}
-        <Navbar />
+      <CartProvider>
+        <View style={styles.container}>
+          {/* Navbar */}
+          <Navbar />
 
-        <View style={styles.content}>
-          <Stack
-            screenOptions={{
-              headerShown: false
-            }}
-          />
+          <View style={styles.content}>
+            <Stack
+              screenOptions={{
+                headerShown: false
+              }}
+            />
+          </View>
         </View>
-      </View>
-      <StatusBar style='auto' />
+        <StatusBar style='auto' />
+      </CartProvider>
     </GluestackUIProvider>
   )
 }

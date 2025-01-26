@@ -6,6 +6,7 @@ import { HStack } from '../ui/hstack'
 import SvgIcon from '@/assets/Icons'
 import { Link, useRouter } from 'expo-router'
 import { VStack } from '../ui/vstack'
+import { useCart } from '@/hooks/reducer/CartProvider'
 
 interface ProductCardProps {
   product: {
@@ -13,11 +14,14 @@ interface ProductCardProps {
     images: { originalSrc: string }[]
     title: string
     totalInventory: string
+    variants: any
   }
   isLoading?: boolean
 }
 
 const ProductCard = ({ product, isLoading }: ProductCardProps) => {
+  const { dispatch } = useCart()
+
   if (isLoading) {
     return (
       <View className='w-full max-w-[300px] p-4 border border-gray-300 bg-white rounded-md shadow-sm'>
@@ -30,6 +34,10 @@ const ProductCard = ({ product, isLoading }: ProductCardProps) => {
 
   const handleDetails = (productId: string) => {
     router.push(`/productDetails/${productId}`)
+  }
+
+  const handleAddToCart = (product: any) => {
+    dispatch({ type: 'ADD_TO_CART', item: product })
   }
 
   return (
@@ -72,6 +80,7 @@ const ProductCard = ({ product, isLoading }: ProductCardProps) => {
         <HStack className='justify-between gap-2'>
           <CustomButton
             btnText='Add to Cart'
+            handleFunction={() => handleAddToCart(product?.variants[0])}
             btnTextStyle='text-center text-sm font-semibold text-black'
             btnStyle='flex-1 bg-white border border-gray-700 rounded-md py-2'
           />
