@@ -37,7 +37,7 @@ const ProductCard = ({ product, isLoading }: ProductCardProps) => {
   }
 
   const handleAddToCart = (product: any) => {
-    dispatch({ type: 'ADD_TO_CART', item: product })
+    dispatch({ type: 'ADD_TO_CART', item: { ...product, quantity: 1 } })
   }
 
   const handleBuyNow = (product: any) => {
