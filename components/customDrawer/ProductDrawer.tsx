@@ -116,7 +116,7 @@ const ProductDrawer = ({ productId }: { productId: string }) => {
   useEffect(() => {
     setIsLoading(true)
     fetch(
-      `https://soonest-newest-vb-enters.trycloudflare.com/singleProduct?shop=miavai649.myshopify.com&id=${productId}`
+      `https://sir-portraits-chancellor-lauren.trycloudflare.com/singleProduct?shop=miavai649.myshopify.com&id=${productId}`
     )
       .then((res) => res.json())
       .then((data) => {

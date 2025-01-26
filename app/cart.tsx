@@ -78,7 +78,7 @@ const cart = () => {
   useEffect(() => {
     setIsLoading(true)
     fetch(
-      'https://soonest-newest-vb-enters.trycloudflare.com/miavai649.myshopify.com'
+      'https://sir-portraits-chancellor-lauren.trycloudflare.com/miavai649.myshopify.com'
     )
       .then((res) => res.json())
       .then((data) => {

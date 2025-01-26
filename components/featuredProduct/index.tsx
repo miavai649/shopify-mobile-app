@@ -13,17 +13,17 @@ import SvgIcon from '@/assets/Icons'
 import { VStack } from '../ui/vstack'
 import CustomButton from '../button'
 import ProductCard from '../card/ProductCard'
-import ProductDrawer from '../customDrawer/ProductDrawer'
 
 const FeaturedProduct = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   const [products, setProducts] = useState([])
+  console.log('🚀 ~ FeaturedProduct ~ products:', products)
 
   useEffect(() => {
     setIsLoading(true)
     fetch(
-      'https://soonest-newest-vb-enters.trycloudflare.com/miavai649.myshopify.com'
+      'https://sir-portraits-chancellor-lauren.trycloudflare.com/miavai649.myshopify.com'
     )
       .then((res) => res.json())
       .then((data) => {
@@ -52,7 +52,7 @@ const FeaturedProduct = () => {
       </HStack>
 
       <Grid
-        className='gap-6 px-6 mb-6'
+        className='gap-6 px-6 mb-6 '
         _extra={{
           className: 'grid-cols-2'
         }}>
